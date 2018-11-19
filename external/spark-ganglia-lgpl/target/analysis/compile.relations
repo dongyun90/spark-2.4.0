@@ -1,0 +1,33 @@
+products:
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> external/spark-ganglia-lgpl/target/classes/org/apache/spark/metrics/sink/GangliaSink$$anonfun$1.class
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> external/spark-ganglia-lgpl/target/classes/org/apache/spark/metrics/sink/GangliaSink$$anonfun$10.class
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> external/spark-ganglia-lgpl/target/classes/org/apache/spark/metrics/sink/GangliaSink$$anonfun$2.class
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> external/spark-ganglia-lgpl/target/classes/org/apache/spark/metrics/sink/GangliaSink$$anonfun$3.class
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> external/spark-ganglia-lgpl/target/classes/org/apache/spark/metrics/sink/GangliaSink$$anonfun$4.class
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> external/spark-ganglia-lgpl/target/classes/org/apache/spark/metrics/sink/GangliaSink$$anonfun$5.class
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> external/spark-ganglia-lgpl/target/classes/org/apache/spark/metrics/sink/GangliaSink$$anonfun$6.class
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> external/spark-ganglia-lgpl/target/classes/org/apache/spark/metrics/sink/GangliaSink$$anonfun$7.class
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> external/spark-ganglia-lgpl/target/classes/org/apache/spark/metrics/sink/GangliaSink$$anonfun$8.class
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> external/spark-ganglia-lgpl/target/classes/org/apache/spark/metrics/sink/GangliaSink$$anonfun$9.class
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> external/spark-ganglia-lgpl/target/classes/org/apache/spark/metrics/sink/GangliaSink.class
+binary dependencies:
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> core/target/spark-core_2.11-2.4.0.jar
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> /home/dongyun/maven_repo/info/ganglia/gmetric4j/gmetric4j/1.0.7/gmetric4j-1.0.7.jar
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> /home/dongyun/maven_repo/io/dropwizard/metrics/metrics-core/3.1.5/metrics-core-3.1.5.jar
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> /home/dongyun/maven_repo/io/dropwizard/metrics/metrics-ganglia/3.1.5/metrics-ganglia-3.1.5.jar
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> /home/dongyun/maven_repo/org/scala-lang/scala-library/2.11.12/scala-library-2.11.12.jar
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> /usr/java/jdk1.8.0_141/jre/lib/rt.jar
+source dependencies:
+external dependencies:
+class names:
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> org.apache.spark.metrics.sink.GangliaSink
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> org.apache.spark.metrics.sink.GangliaSink$$anonfun$1
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> org.apache.spark.metrics.sink.GangliaSink$$anonfun$10
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> org.apache.spark.metrics.sink.GangliaSink$$anonfun$2
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> org.apache.spark.metrics.sink.GangliaSink$$anonfun$3
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> org.apache.spark.metrics.sink.GangliaSink$$anonfun$4
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> org.apache.spark.metrics.sink.GangliaSink$$anonfun$5
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> org.apache.spark.metrics.sink.GangliaSink$$anonfun$6
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> org.apache.spark.metrics.sink.GangliaSink$$anonfun$7
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> org.apache.spark.metrics.sink.GangliaSink$$anonfun$8
+   external/spark-ganglia-lgpl/src/main/scala/org/apache/spark/metrics/sink/GangliaSink.scala -> org.apache.spark.metrics.sink.GangliaSink$$anonfun$9

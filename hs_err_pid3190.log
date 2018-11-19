@@ -1,0 +1,1113 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 335937536 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2640), pid=3190, tid=0x15283b40
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_141-b15) (build 1.8.0_141-b15)
+# Java VM: Java HotSpot(TM) Client VM (25.141-b15 mixed mode linux-x86 )
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0xb685dc00):  VMThread [stack: 0x15203000,0x15284000] [id=3207]
+
+Stack: [0x15203000,0x15284000],  sp=0x15282730,  free space=509k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0x5bd0ff]  VMError::report_and_die()+0x16f
+V  [libjvm.so+0x20d785]  report_vm_out_of_memory(char const*, int, unsigned int, VMErrorType, char const*)+0x55
+V  [libjvm.so+0x49fe76]  os::Linux::commit_memory_impl(char*, unsigned int, bool)+0xe6
+V  [libjvm.so+0x4a0298]  os::pd_commit_memory(char*, unsigned int, unsigned int, bool)+0x28
+V  [libjvm.so+0x49a1ac]  os::commit_memory(char*, unsigned int, unsigned int, bool)+0x2c
+V  [libjvm.so+0x5b919c]  VirtualSpace::expand_by(unsigned int, bool)+0x1ec
+V  [libjvm.so+0x29e29b]  OneContigSpaceCardGeneration::grow_by(unsigned int)+0x1b
+V  [libjvm.so+0x29e5bb]  CardGeneration::expand(unsigned int, unsigned int)+0x5b
+V  [libjvm.so+0x29e63a]  OneContigSpaceCardGeneration::expand(unsigned int, unsigned int)+0x2a
+V  [libjvm.so+0x29ec75]  CardGeneration::compute_new_size()+0x1d5
+V  [libjvm.so+0x292d79]  GenCollectedHeap::do_collection(bool, bool, unsigned int, bool, int)+0x679
+V  [libjvm.so+0x1ba46f]  GenCollectorPolicy::satisfy_failed_allocation(unsigned int, bool)+0x10f
+V  [libjvm.so+0x5be2e4]  VM_GenCollectForAllocation::doit()+0x74
+V  [libjvm.so+0x5c7c07]  VM_Operation::evaluate()+0x47
+V  [libjvm.so+0x5c5ce3]  VMThread::evaluate_operation(VM_Operation*)+0xb3
+V  [libjvm.so+0x5c6080]  VMThread::loop()+0x1b0
+V  [libjvm.so+0x5c64e5]  VMThread::run()+0x85
+V  [libjvm.so+0x4a2739]  java_start(Thread*)+0x119
+C  [libpthread.so.0+0x6f70]  start_thread+0xd0
+
+VM_Operation (0xb6a2f464): GenCollectForAllocation, mode: safepoint, requested by thread 0xb6807800
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x1120d000 JavaThread "resolver-5" daemon [_thread_blocked, id=3249, stack(0x10caf000,0x10d00000)]
+  0x11030400 JavaThread "resolver-4" daemon [_thread_blocked, id=3248, stack(0x1184a000,0x1189b000)]
+  0x12367000 JavaThread "resolver-3" daemon [_thread_blocked, id=3218, stack(0x12642000,0x12693000)]
+  0x12365800 JavaThread "resolver-2" daemon [_thread_blocked, id=3217, stack(0x12e32000,0x12e83000)]
+  0x1314e400 JavaThread "resolver-1" daemon [_thread_blocked, id=3214, stack(0x130af000,0x13100000)]
+  0xb6884c00 JavaThread "Service Thread" daemon [_thread_blocked, id=3212, stack(0x14bd6000,0x14c27000)]
+  0xb6881800 JavaThread "C1 CompilerThread0" daemon [_thread_blocked, id=3211, stack(0x14c27000,0x14ca8000)]
+  0xb6880000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=3210, stack(0x14ca8000,0x14cf9000)]
+  0xb6865400 JavaThread "Finalizer" daemon [_thread_blocked, id=3209, stack(0x1505e000,0x150af000)]
+  0xb6862800 JavaThread "Reference Handler" daemon [_thread_blocked, id=3208, stack(0x150af000,0x15100000)]
+  0xb6807800 JavaThread "main" [_thread_blocked, id=3206, stack(0xb69e2000,0xb6a33000)]
+
+Other Threads:
+=>0xb685dc00 VMThread [stack: 0x15203000,0x15284000] [id=3207]
+  0xb6887000 WatcherThread [stack: 0x14b55000,0x14bd6000] [id=3213]
+
+VM state:at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0xb6804ea0] Threads_lock - owner thread: 0xb685dc00
+[0xb68052b0] Heap_lock - owner thread: 0xb6807800
+
+Heap:
+ def new generation   total 381504K, used 0K [0x16000000, 0x2fdf0000, 0x40aa0000)
+  eden space 339136K,   0% used [0x16000000, 0x16000000, 0x2ab30000)
+  from space 42368K,   0% used [0x2ab30000, 0x2ab30000, 0x2d490000)
+  to   space 42368K,   0% used [0x2d490000, 0x2d490000, 0x2fdf0000)
+ tenured generation   total 944720K, used 763668K [0x40aa0000, 0x7a534000, 0x96000000)
+   the space 944720K,  80% used [0x40aa0000, 0x6f465248, 0x6f465400, 0x7a534000)
+ Metaspace       used 67839K, capacity 68649K, committed 68864K, reserved 68912K
+
+Card table byte_map: [0x15bff000,0x16000000] byte_map_base: 0x15b4f000
+
+Polling page: 0xb770b000
+
+CodeCache: size=524288Kb used=52502Kb max_used=94785Kb free=471785Kb
+ bounds [0x96800000, 0x9c4a0000, 0xb6800000]
+ total_blobs=30814 nmethods=30579 adapters=157
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 839.765 Thread 0xb6881800 129618             scala.tools.nsc.backend.icode.GenICode$ICodePhase::areSameFinals$1 (40 bytes)
+Event: 839.766 Thread 0xb6881800 nmethod 129618 0x98f5b948 code [0x98f5bb40, 0x98f5bf6c]
+Event: 839.772 Thread 0xb6881800 129619             scala.tools.nsc.backend.icode.TypeKinds$REFERENCE::isReferenceType (2 bytes)
+Event: 839.772 Thread 0xb6881800 nmethod 129619 0x98f5b788 code [0x98f5b880, 0x98f5b900]
+Event: 839.850 Thread 0xb6881800 129620             scala.tools.nsc.backend.icode.Opcodes$opcodes$UNBOX::<init> (65 bytes)
+Event: 839.850 Thread 0xb6881800 nmethod 129620 0x98f5b248 code [0x98f5b380, 0x98f5b5b0]
+Event: 839.889 Thread 0xb6881800 129621             scala.tools.nsc.backend.icode.Opcodes$opcodes$CALL_PRIMITIVE::equals (95 bytes)
+Event: 839.890 Thread 0xb6881800 nmethod 129621 0x98f5ae48 code [0x98f5af60, 0x98f5b14c]
+Event: 839.895 Thread 0xb6881800 129622             scala.tools.nsc.backend.icode.GenICode$ICodePhase$DuplicateLabels::transform (427 bytes)
+Event: 839.897 Thread 0xb6881800 nmethod 129622 0x98f56c08 code [0x98f57130, 0x98f58500]
+
+GC Heap History (10 events):
+Event: 824.662 GC heap after
+Heap after GC invocations=527 (full 31):
+ def new generation   total 381504K, used 29645K [0x16000000, 0x2fdf0000, 0x40aa0000)
+  eden space 339136K,   0% used [0x16000000, 0x16000000, 0x2ab30000)
+  from space 42368K,  69% used [0x2d490000, 0x2f1836b8, 0x2fdf0000)
+  to   space 42368K,   0% used [0x2ab30000, 0x2ab30000, 0x2d490000)
+ tenured generation   total 847696K, used 694039K [0x40aa0000, 0x74674000, 0x96000000)
+   the space 847696K,  81% used [0x40aa0000, 0x6b065d40, 0x6b065e00, 0x74674000)
+ Metaspace       used 67171K, capacity 67977K, committed 68224K, reserved 68912K
+}
+Event: 828.144 GC heap before
+{Heap before GC invocations=527 (full 31):
+ def new generation   total 381504K, used 368781K [0x16000000, 0x2fdf0000, 0x40aa0000)
+  eden space 339136K,  99% used [0x16000000, 0x2ab2ffd0, 0x2ab30000)
+  from space 42368K,  69% used [0x2d490000, 0x2f1836b8, 0x2fdf0000)
+  to   space 42368K,   0% used [0x2ab30000, 0x2ab30000, 0x2d490000)
+ tenured generation   total 847696K, used 694039K [0x40aa0000, 0x74674000, 0x96000000)
+   the space 847696K,  81% used [0x40aa0000, 0x6b065d40, 0x6b065e00, 0x74674000)
+ Metaspace       used 67425K, capacity 68233K, committed 68480K, reserved 68912K
+Event: 828.487 GC heap after
+Heap after GC invocations=528 (full 31):
+ def new generation   total 381504K, used 38732K [0x16000000, 0x2fdf0000, 0x40aa0000)
+  eden space 339136K,   0% used [0x16000000, 0x16000000, 0x2ab30000)
+  from space 42368K,  91% used [0x2ab30000, 0x2d103190, 0x2d490000)
+  to   space 42368K,   0% used [0x2d490000, 0x2d490000, 0x2fdf0000)
+ tenured generation   total 847696K, used 706431K [0x40aa0000, 0x74674000, 0x96000000)
+   the space 847696K,  83% used [0x40aa0000, 0x6bc7fd60, 0x6bc7fe00, 0x74674000)
+ Metaspace       used 67425K, capacity 68233K, committed 68480K, reserved 68912K
+}
+Event: 831.095 GC heap before
+{Heap before GC invocations=528 (full 31):
+ def new generation   total 381504K, used 377868K [0x16000000, 0x2fdf0000, 0x40aa0000)
+  eden space 339136K, 100% used [0x16000000, 0x2ab30000, 0x2ab30000)
+  from space 42368K,  91% used [0x2ab30000, 0x2d103190, 0x2d490000)
+  to   space 42368K,   0% used [0x2d490000, 0x2d490000, 0x2fdf0000)
+ tenured generation   total 847696K, used 706431K [0x40aa0000, 0x74674000, 0x96000000)
+   the space 847696K,  83% used [0x40aa0000, 0x6bc7fd60, 0x6bc7fe00, 0x74674000)
+ Metaspace       used 67440K, capacity 68265K, committed 68480K, reserved 68912K
+Event: 831.383 GC heap after
+Heap after GC invocations=529 (full 31):
+ def new generation   total 381504K, used 26716K [0x16000000, 0x2fdf0000, 0x40aa0000)
+  eden space 339136K,   0% used [0x16000000, 0x16000000, 0x2ab30000)
+  from space 42368K,  63% used [0x2d490000, 0x2eea7150, 0x2fdf0000)
+  to   space 42368K,   0% used [0x2ab30000, 0x2ab30000, 0x2d490000)
+ tenured generation   total 847696K, used 742954K [0x40aa0000, 0x74674000, 0x96000000)
+   the space 847696K,  87% used [0x40aa0000, 0x6e02ab58, 0x6e02ac00, 0x74674000)
+ Metaspace       used 67440K, capacity 68265K, committed 68480K, reserved 68912K
+}
+Event: 834.064 GC heap before
+{Heap before GC invocations=529 (full 31):
+ def new generation   total 381504K, used 365852K [0x16000000, 0x2fdf0000, 0x40aa0000)
+  eden space 339136K, 100% used [0x16000000, 0x2ab30000, 0x2ab30000)
+  from space 42368K,  63% used [0x2d490000, 0x2eea7150, 0x2fdf0000)
+  to   space 42368K,   0% used [0x2ab30000, 0x2ab30000, 0x2d490000)
+ tenured generation   total 847696K, used 742954K [0x40aa0000, 0x74674000, 0x96000000)
+   the space 847696K,  87% used [0x40aa0000, 0x6e02ab58, 0x6e02ac00, 0x74674000)
+ Metaspace       used 67443K, capacity 68265K, committed 68480K, reserved 68912K
+Event: 834.329 GC heap after
+Heap after GC invocations=530 (full 31):
+ def new generation   total 381504K, used 27452K [0x16000000, 0x2fdf0000, 0x40aa0000)
+  eden space 339136K,   0% used [0x16000000, 0x16000000, 0x2ab30000)
+  from space 42368K,  64% used [0x2ab30000, 0x2c5ff2d8, 0x2d490000)
+  to   space 42368K,   0% used [0x2d490000, 0x2d490000, 0x2fdf0000)
+ tenured generation   total 847696K, used 769478K [0x40aa0000, 0x74674000, 0x96000000)
+   the space 847696K,  90% used [0x40aa0000, 0x6fa11a90, 0x6fa11c00, 0x74674000)
+ Metaspace       used 67443K, capacity 68265K, committed 68480K, reserved 68912K
+}
+Event: 837.389 GC heap before
+{Heap before GC invocations=530 (full 31):
+ def new generation   total 381504K, used 366588K [0x16000000, 0x2fdf0000, 0x40aa0000)
+  eden space 339136K, 100% used [0x16000000, 0x2ab30000, 0x2ab30000)
+  from space 42368K,  64% used [0x2ab30000, 0x2c5ff2d8, 0x2d490000)
+  to   space 42368K,   0% used [0x2d490000, 0x2d490000, 0x2fdf0000)
+ tenured generation   total 847696K, used 769478K [0x40aa0000, 0x74674000, 0x96000000)
+   the space 847696K,  90% used [0x40aa0000, 0x6fa11a90, 0x6fa11c00, 0x74674000)
+ Metaspace       used 67838K, capacity 68649K, committed 68864K, reserved 68912K
+Event: 837.848 GC heap after
+Heap after GC invocations=531 (full 31):
+ def new generation   total 381504K, used 42367K [0x16000000, 0x2fdf0000, 0x40aa0000)
+  eden space 339136K,   0% used [0x16000000, 0x16000000, 0x2ab30000)
+  from space 42368K,  99% used [0x2d490000, 0x2fdefff8, 0x2fdf0000)
+  to   space 42368K,   0% used [0x2ab30000, 0x2ab30000, 0x2d490000)
+ tenured generation   total 847696K, used 840676K [0x40aa0000, 0x74674000, 0x96000000)
+   the space 847696K,  99% used [0x40aa0000, 0x73f99220, 0x73f99400, 0x74674000)
+ Metaspace       used 67838K, capacity 68649K, committed 68864K, reserved 68912K
+}
+Event: 840.056 GC heap before
+{Heap before GC invocations=531 (full 31):
+ def new generation   total 381504K, used 381503K [0x16000000, 0x2fdf0000, 0x40aa0000)
+  eden space 339136K, 100% used [0x16000000, 0x2ab30000, 0x2ab30000)
+  from space 42368K,  99% used [0x2d490000, 0x2fdefff8, 0x2fdf0000)
+  to   space 42368K,   0% used [0x2ab30000, 0x2ab30000, 0x2d490000)
+ tenured generation   total 847696K, used 840676K [0x40aa0000, 0x74674000, 0x96000000)
+   the space 847696K,  99% used [0x40aa0000, 0x73f99220, 0x73f99400, 0x74674000)
+ Metaspace       used 67839K, capacity 68649K, committed 68864K, reserved 68912K
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (10 events):
+Event: 661.467 Thread 0xb6807800 Exception <a 'java/lang/NullPointerException'> (0x190cdc10) thrown at [/HUDSON/workspace/8-2-build-linux-i586/jdk8u141/9370/hotspot/src/share/vm/runtime/sharedRuntime.cpp, line 605]
+Event: 661.467 Thread 0xb6807800 Implicit null exception at 0x98738dfe to 0x98739e5c
+Event: 661.467 Thread 0xb6807800 Exception <a 'java/lang/NullPointerException'> (0x190ce5e0) thrown at [/HUDSON/workspace/8-2-build-linux-i586/jdk8u141/9370/hotspot/src/share/vm/runtime/sharedRuntime.cpp, line 605]
+Event: 661.467 Thread 0xb6807800 Implicit null exception at 0x98738dfe to 0x98739e5c
+Event: 661.467 Thread 0xb6807800 Exception <a 'java/lang/NullPointerException'> (0x190ce9d0) thrown at [/HUDSON/workspace/8-2-build-linux-i586/jdk8u141/9370/hotspot/src/share/vm/runtime/sharedRuntime.cpp, line 605]
+Event: 661.467 Thread 0xb6807800 Implicit null exception at 0x98738dfe to 0x98739e5c
+Event: 661.467 Thread 0xb6807800 Exception <a 'java/lang/NullPointerException'> (0x190cedc0) thrown at [/HUDSON/workspace/8-2-build-linux-i586/jdk8u141/9370/hotspot/src/share/vm/runtime/sharedRuntime.cpp, line 605]
+Event: 661.956 Thread 0xb6807800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x1a0721b8) thrown at [/HUDSON/workspace/8-2-build-linux-i586/jdk8u141/9370/hotspot/src/share/vm/runtime/sharedRuntime.cpp, line 605]
+Event: 662.636 Thread 0xb6807800 Exception <a 'java/net/ConnectException'> (0x1fc919c8) thrown at [/HUDSON/workspace/8-2-build-linux-i586/jdk8u141/9370/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 662.706 Thread 0xb6807800 Exception <a 'java/io/FileNotFoundException'> (0x1fd25388) thrown at [/HUDSON/workspace/8-2-build-linux-i586/jdk8u141/9370/hotspot/src/share/vm/prims/jni.cpp, line 709]
+
+Events (10 events):
+Event: 836.709 loading class scala/tools/nsc/backend/icode/GenICode$ICodePhase$$anonfun$1$$anonfun$apply$mcZ$sp$1 done
+Event: 836.710 loading class scala/tools/nsc/backend/icode/GenICode$ICodePhase$$anonfun$1$$anonfun$apply$mcZ$sp$1$$anonfun$apply$4
+Event: 836.710 loading class scala/tools/nsc/backend/icode/GenICode$ICodePhase$$anonfun$1$$anonfun$apply$mcZ$sp$1$$anonfun$apply$4 done
+Event: 836.780 loading class scala/tools/nsc/backend/icode/GenICode$ICodePhase$$anonfun$6$$anonfun$genWildcardHandler$1$1
+Event: 836.780 loading class scala/tools/nsc/backend/icode/GenICode$ICodePhase$$anonfun$6$$anonfun$genWildcardHandler$1$1 done
+Event: 837.317 loading class scala/tools/nsc/backend/icode/BasicBlocks$BasicBlock$$anonfun$subst$1$$anonfun$apply$1
+Event: 837.317 loading class scala/tools/nsc/backend/icode/BasicBlocks$BasicBlock$$anonfun$subst$1$$anonfun$apply$1 done
+Event: 837.389 Executing VM operation: GenCollectForAllocation
+Event: 837.848 Executing VM operation: GenCollectForAllocation done
+Event: 840.056 Executing VM operation: GenCollectForAllocation
+
+
+Dynamic libraries:
+05881000-05a81000 rw-p 00000000 00:00 0 
+05c81000-05e81000 rw-p 00000000 00:00 0 
+06181000-06281000 rw-p 00000000 00:00 0 
+06481000-06581000 rw-p 00000000 00:00 0 
+06e81000-06f81000 rw-p 00000000 00:00 0 
+07181000-07281000 rw-p 00000000 00:00 0 
+08048000-08049000 r-xp 00000000 08:01 424690     /usr/java/jdk1.8.0_141/bin/java
+08049000-0804a000 rw-p 00000000 08:01 424690     /usr/java/jdk1.8.0_141/bin/java
+08600000-08700000 rw-p 00000000 00:00 0 
+08800000-08900000 rw-p 00000000 00:00 0 
+08a00000-08af9000 rw-p 00000000 00:00 0 
+08af9000-08b00000 ---p 00000000 00:00 0 
+08c15000-09dfd000 rw-p 00000000 00:00 0          [heap]
+0a800000-0a8fe000 rw-p 00000000 00:00 0 
+0a8fe000-0a900000 ---p 00000000 00:00 0 
+0ac00000-0ad00000 rw-p 00000000 00:00 0 
+0b400000-0b4f0000 rw-p 00000000 00:00 0 
+0b4f0000-0b500000 ---p 00000000 00:00 0 
+0b600000-0b700000 rw-p 00000000 00:00 0 
+0b700000-0b7fd000 rw-p 00000000 00:00 0 
+0b7fd000-0b800000 ---p 00000000 00:00 0 
+0b800000-0b900000 rw-p 00000000 00:00 0 
+0b900000-0ba00000 rw-p 00000000 00:00 0 
+0ba00000-0baf1000 rw-p 00000000 00:00 0 
+0baf1000-0bb00000 ---p 00000000 00:00 0 
+0bb00000-0bbfb000 rw-p 00000000 00:00 0 
+0bbfb000-0bc00000 ---p 00000000 00:00 0 
+0bc00000-0bcf4000 rw-p 00000000 00:00 0 
+0bcf4000-0bd00000 ---p 00000000 00:00 0 
+0bdee000-0bdf1000 ---p 00000000 00:00 0 
+0bdf1000-0be3f000 rw-p 00000000 00:00 0 
+0be3f000-0be42000 ---p 00000000 00:00 0 
+0be42000-0bf90000 rw-p 00000000 00:00 0 
+0bf90000-0bfa3000 r-xp 00000000 08:01 656500     /lib/i386-linux-gnu/libresolv-2.19.so
+0bfa3000-0bfa4000 ---p 00013000 08:01 656500     /lib/i386-linux-gnu/libresolv-2.19.so
+0bfa4000-0bfa5000 r--p 00013000 08:01 656500     /lib/i386-linux-gnu/libresolv-2.19.so
+0bfa5000-0bfa6000 rw-p 00014000 08:01 656500     /lib/i386-linux-gnu/libresolv-2.19.so
+0bfa6000-0c0a8000 rw-p 00000000 00:00 0 
+0c0a8000-0c0c4000 r-xp 00000000 08:01 656401     /lib/i386-linux-gnu/libgcc_s.so.1
+0c0c4000-0c0c5000 rw-p 0001b000 08:01 656401     /lib/i386-linux-gnu/libgcc_s.so.1
+0c0c5000-0c0f8000 r-xp 00000000 08:01 425293     /usr/java/jdk1.8.0_141/jre/lib/i386/libsunec.so
+0c0f8000-0c0fc000 rw-p 00032000 08:01 425293     /usr/java/jdk1.8.0_141/jre/lib/i386/libsunec.so
+0c0fc000-0c200000 rw-p 00000000 00:00 0 
+0c200000-0c2f1000 rw-p 00000000 00:00 0 
+0c2f1000-0c300000 ---p 00000000 00:00 0 
+0c300000-0c3fd000 rw-p 00000000 00:00 0 
+0c3fd000-0c400000 ---p 00000000 00:00 0 
+0c400000-0c4f3000 rw-p 00000000 00:00 0 
+0c4f3000-0c500000 ---p 00000000 00:00 0 
+0c500000-0c600000 rw-p 00000000 00:00 0 
+0c600000-0c700000 rw-p 00000000 00:00 0 
+0c7d8000-0c8d8000 rw-p 00000000 00:00 0 
+0c8d8000-0c9d8000 rw-p 00000000 00:00 0 
+0c9d8000-0cad8000 rw-p 00000000 00:00 0 
+0cad8000-0cc00000 r--s 00fe5000 08:01 1358845    /home/dongyun/maven_repo/it/unimi/dsi/fastutil/7.0.13/fastutil-7.0.13.jar
+0cc00000-0ccfe000 rw-p 00000000 00:00 0 
+0ccfe000-0cd00000 ---p 00000000 00:00 0 
+0cd00000-0cdfd000 rw-p 00000000 00:00 0 
+0cdfd000-0ce00000 ---p 00000000 00:00 0 
+0ce00000-0cefe000 rw-p 00000000 00:00 0 
+0cefe000-0cf00000 ---p 00000000 00:00 0 
+0cf00000-0cffe000 rw-p 00000000 00:00 0 
+0cffe000-0d000000 ---p 00000000 00:00 0 
+0d000000-0d0fe000 rw-p 00000000 00:00 0 
+0d0fe000-0d100000 ---p 00000000 00:00 0 
+0d100000-0d1fe000 rw-p 00000000 00:00 0 
+0d1fe000-0d200000 ---p 00000000 00:00 0 
+0d200000-0d2ff000 rw-p 00000000 00:00 0 
+0d2ff000-0d300000 ---p 00000000 00:00 0 
+0d300000-0d3fe000 rw-p 00000000 00:00 0 
+0d3fe000-0d400000 ---p 00000000 00:00 0 
+0d400000-0d500000 rw-p 00000000 00:00 0 
+0d500000-0d700000 rw-p 00000000 00:00 0 
+0d700000-0d800000 rw-p 00000000 00:00 0 
+0d800000-0d900000 rw-p 00000000 00:00 0 
+0d900000-0da00000 rw-p 00000000 00:00 0 
+0da00000-0daff000 rw-p 00000000 00:00 0 
+0daff000-0db00000 ---p 00000000 00:00 0 
+0db11000-0db16000 r-xp 00000000 08:01 656447     /lib/i386-linux-gnu/libnss_dns-2.19.so
+0db16000-0db17000 r--p 00004000 08:01 656447     /lib/i386-linux-gnu/libnss_dns-2.19.so
+0db17000-0db18000 rw-p 00005000 08:01 656447     /lib/i386-linux-gnu/libnss_dns-2.19.so
+0db18000-0db1a000 r-xp 00000000 08:01 656455     /lib/i386-linux-gnu/libnss_mdns4_minimal.so.2
+0db1a000-0db1b000 r--p 00001000 08:01 656455     /lib/i386-linux-gnu/libnss_mdns4_minimal.so.2
+0db1b000-0db1c000 rw-p 00002000 08:01 656455     /lib/i386-linux-gnu/libnss_mdns4_minimal.so.2
+0db1c000-0dbc7000 r--s 00946000 08:01 1198563    /home/dongyun/maven_repo/org/scalatest/scalatest_2.11/3.0.3/scalatest_2.11-3.0.3.jar
+0dbc7000-0dbc9000 r--s 00008000 08:01 1346108    /home/dongyun/maven_repo/org/codehaus/janino/commons-compiler/3.0.9/commons-compiler-3.0.9.jar
+0dbc9000-0dbd4000 r--s 000b9000 08:01 1182577    /home/dongyun/maven_repo/org/codehaus/janino/janino/3.0.9/janino-3.0.9.jar
+0dbd7000-0dcd7000 rw-p 00000000 00:00 0 
+0dcd7000-0dd00000 r--s 001ee000 08:01 1198183    /home/dongyun/maven_repo/com/google/guava/guava/14.0.1/guava-14.0.1.jar
+0dd00000-0de00000 rw-p 00000000 00:00 0 
+0de00000-0df00000 rw-p 00000000 00:00 0 
+0df00000-0e000000 rw-p 00000000 00:00 0 
+0e044000-0e144000 rw-p 00000000 00:00 0 
+0e144000-0e244000 rw-p 00000000 00:00 0 
+0e244000-0e344000 rw-p 00000000 00:00 0 
+0e344000-0e400000 r--s 008fb000 08:01 1358643    /home/dongyun/Downloads/spark-2.4.0/sql/catalyst/target/spark-catalyst_2.11-2.4.0.jar
+0e400000-0e4e2000 rw-p 00000000 00:00 0 
+0e4e2000-0e500000 ---p 00000000 00:00 0 
+0e500000-0e600000 rw-p 00000000 00:00 0 
+0e600000-0e700000 rw-p 00000000 00:00 0 
+0e700000-0e7fe000 rw-p 00000000 00:00 0 
+0e7fe000-0e800000 ---p 00000000 00:00 0 
+0e800000-0e900000 rw-p 00000000 00:00 0 
+0e900000-0e9fe000 rw-p 00000000 00:00 0 
+0e9fe000-0ea00000 ---p 00000000 00:00 0 
+0ea00000-0eb00000 rw-p 00000000 00:00 0 
+0eb00000-0ebfe000 rw-p 00000000 00:00 0 
+0ebfe000-0ec00000 ---p 00000000 00:00 0 
+0ec00000-0ed00000 rw-p 00000000 00:00 0 
+0ed00000-0edfb000 rw-p 00000000 00:00 0 
+0edfb000-0ee00000 ---p 00000000 00:00 0 
+0ee00000-0ef00000 rw-p 00000000 00:00 0 
+0ef00000-0f000000 rw-p 00000000 00:00 0 
+0f000000-0f200000 rw-p 00000000 00:00 0 
+0f200000-0f500000 rw-p 00000000 00:00 0 
+0f523000-0f600000 r--s 00884000 08:01 1358641    /home/dongyun/Downloads/spark-2.4.0/sql/catalyst/target/spark-catalyst_2.11-2.4.0-tests.jar
+0f600000-0f7f2000 rw-p 00000000 00:00 0 
+0f7f2000-0f800000 ---p 00000000 00:00 0 
+0f800000-0f900000 rw-p 00000000 00:00 0 
+0f900000-0f902000 r--s 00006000 08:01 1326167    /home/dongyun/Downloads/spark-2.4.0/common/sketch/target/spark-sketch_2.11-2.4.0.jar
+0f902000-0f967000 r--s 00abc000 08:01 1346198    /home/dongyun/maven_repo/com/ibm/icu/icu4j/58.2/icu4j-58.2.jar
+0f967000-0f96a000 r--s 00012000 08:01 1346195    /home/dongyun/maven_repo/org/glassfish/javax.json/1.0.4/javax.json-1.0.4.jar
+0f96a000-0f96c000 r--s 00005000 08:01 1346193    /home/dongyun/maven_repo/org/abego/treelayout/org.abego.treelayout.core/1.0.3/org.abego.treelayout.core-1.0.3.jar
+0f96c000-0f970000 r--s 00037000 08:01 1346184    /home/dongyun/maven_repo/org/antlr/ST4/4.0.8/ST4-4.0.8.jar
+0f970000-0f973000 r--s 00026000 08:01 1182629    /home/dongyun/maven_repo/org/antlr/antlr-runtime/3.5.2/antlr-runtime-3.5.2.jar
+0f973000-0f979000 r--s 0004c000 08:01 1200813    /home/dongyun/maven_repo/org/antlr/antlr4-runtime/4.7/antlr4-runtime-4.7.jar
+0f979000-0f986000 r--s 00117000 08:01 1346191    /home/dongyun/maven_repo/org/antlr/antlr4/4.7/antlr4-4.7.jar
+0f986000-0f988000 r--s 00001000 08:01 1346190    /home/dongyun/maven_repo/org/sonatype/plexus/plexus-build-api/0.0.7/plexus-build-api-0.0.7.jar
+0f988000-0f98c000 r--s 00035000 08:01 1182584    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-utils/3.0.8/plexus-utils-3.0.8.jar
+0f98c000-0f98e000 r--s 00005000 08:01 1346183    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-compiler-api/2.2/plexus-compiler-api-2.2.jar
+0f98e000-0f98f000 r--s 00007000 08:01 1325977    /home/dongyun/maven_repo/org/antlr/antlr4-maven-plugin/4.7/antlr4-maven-plugin-4.7.jar
+0f991000-0f99d000 r--s 00068000 08:01 1198568    /home/dongyun/maven_repo/org/scala-lang/modules/scala-parser-combinators_2.11/1.1.0/scala-parser-combinators_2.11-1.1.0.jar
+0f9ba000-0f9bc000 r--s 00009000 08:01 1198479    /home/dongyun/maven_repo/org/objenesis/objenesis/2.1/objenesis-2.1.jar
+0f9bc000-0f9dd000 r--s 00177000 08:01 1358809    /home/dongyun/maven_repo/com/carrotsearch/hppc/0.7.2/hppc-0.7.2.jar
+0f9dd000-0f9ee000 r--s 00089000 08:01 1358832    /home/dongyun/maven_repo/joda-time/joda-time/2.9.3/joda-time-2.9.3.jar
+0f9ee000-0f9fe000 r--s 00133000 08:01 1358826    /home/dongyun/maven_repo/org/apache/arrow/arrow-vector/0.10.0/arrow-vector-0.10.0.jar
+0f9fe000-0fa12000 r--s 000ec000 08:01 1358823    /home/dongyun/maven_repo/org/apache/parquet/parquet-jackson/1.10.0/parquet-jackson-1.10.0.jar
+0fa12000-0fa20000 r--s 000a3000 08:01 1358820    /home/dongyun/maven_repo/org/apache/parquet/parquet-format/2.4.0/parquet-format-2.4.0.jar
+0fa20000-0fa26000 r--s 00040000 08:01 1358818    /home/dongyun/maven_repo/org/apache/parquet/parquet-hadoop/1.10.0/parquet-hadoop-1.10.0.jar
+0fa26000-0fa31000 r--s 000c5000 08:01 1358817    /home/dongyun/maven_repo/org/apache/parquet/parquet-encoding/1.10.0/parquet-encoding-1.10.0.jar
+0fa31000-0fa4a000 r--s 000f4000 08:01 1358813    /home/dongyun/maven_repo/org/apache/parquet/parquet-column/1.10.0/parquet-column-1.10.0.jar
+0fa4a000-0fa55000 r--s 000bc000 08:01 1358810    /home/dongyun/maven_repo/org/apache/orc/orc-mapreduce/1.5.2/orc-mapreduce-1.5.2-nohive.jar
+0fab1000-0facd000 r--s 00103000 08:01 1198476    /home/dongyun/maven_repo/org/mockito/mockito-core/1.10.19/mockito-core-1.10.19.jar
+0facd000-0fb00000 r--s 001ca000 08:01 1198480    /home/dongyun/maven_repo/org/scalacheck/scalacheck_2.11/1.13.5/scalacheck_2.11-1.13.5.jar
+0fb00000-0fc00000 rw-p 00000000 00:00 0 
+0fc00000-0fc02000 r--s 00012000 08:01 1358828    /home/dongyun/maven_repo/org/apache/arrow/arrow-memory/0.10.0/arrow-memory-0.10.0.jar
+0fc02000-0fc06000 r--s 00014000 08:01 1358815    /home/dongyun/maven_repo/org/apache/parquet/parquet-common/1.10.0/parquet-common-1.10.0.jar
+0fc0e000-0fc10000 r--s 00006000 08:01 1198572    /home/dongyun/maven_repo/com/novocode/junit-interface/0.11/junit-interface-0.11.jar
+0fc10000-0fc17000 r--s 0008e000 08:01 1358841    /home/dongyun/maven_repo/org/postgresql/postgresql/9.4.1207.jre7/postgresql-9.4.1207.jre7.jar
+0fc17000-0fc21000 r--s 000e7000 08:01 1358838    /home/dongyun/maven_repo/mysql/mysql-connector-java/5.1.38/mysql-connector-java-5.1.38.jar
+0fc21000-0fc30000 r--s 001ae000 08:01 1358837    /home/dongyun/maven_repo/com/h2database/h2/1.4.195/h2-1.4.195.jar
+0fc30000-0fcf7000 r--s 009c6000 08:01 1341286    /home/dongyun/Downloads/spark-2.4.0/core/target/spark-core_2.11-2.4.0-tests.jar
+0fcf7000-0fd00000 r--s 0002d000 08:01 1198470    /home/dongyun/maven_repo/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar
+0fd00000-0fdf3000 rw-p 00000000 00:00 0 
+0fdf3000-0fe00000 ---p 00000000 00:00 0 
+0fe01000-0fe03000 r--s 0000b000 08:01 1358827    /home/dongyun/maven_repo/org/apache/arrow/arrow-format/0.10.0/arrow-format-0.10.0.jar
+0fe03000-0fe17000 r--s 0016d000 08:01 1182646    /home/dongyun/maven_repo/org/apache/orc/orc-core/1.5.2/orc-core-1.5.2-nohive.jar
+0fe17000-0fe1f000 r--s 0005b000 08:01 1358804    /home/dongyun/maven_repo/com/univocity/univocity-parsers/2.7.3/univocity-parsers-2.7.3.jar
+0fe1f000-0fe23000 r--s 0001b000 08:01 1358842    /home/dongyun/maven_repo/org/apache/parquet/parquet-avro/1.10.0/parquet-avro-1.10.0.jar
+0fe23000-0fe25000 r--s 00002000 08:01 1198481    /home/dongyun/maven_repo/org/scala-sbt/test-interface/1.0/test-interface-1.0.jar
+0fe25000-0fe28000 r--s 00008000 08:01 1182670    /home/dongyun/maven_repo/org/apache/maven/shared/maven-shared-io/3.0.0/maven-shared-io-3.0.0.jar
+0fe28000-0fe2d000 r--s 00041000 08:01 1198192    /home/dongyun/maven_repo/org/apache/xbean/xbean-asm6-shaded/4.8/xbean-asm6-shaded-4.8.jar
+0fe2e000-0fe31000 r--s 0001e000 08:01 1358808    /home/dongyun/maven_repo/io/airlift/aircompressor/0.10/aircompressor-0.10.jar
+0fe31000-0fe33000 r--s 0001f000 08:01 1198499    /home/dongyun/maven_repo/org/apache/commons/commons-crypto/1.0.0/commons-crypto-1.0.0.jar
+0fe33000-0fe35000 r--s 0001c000 08:01 1198491    /home/dongyun/maven_repo/net/sf/py4j/py4j/0.10.7/py4j-0.10.7.jar
+0fe35000-0fe38000 r--s 00015000 08:01 1198488    /home/dongyun/maven_repo/net/razorvine/pyrolite/4.13/pyrolite-4.13.jar
+0fe38000-0fe39000 r--s 00000000 08:01 1198560    /home/dongyun/maven_repo/org/spark-project/spark/unused/1.0.0/unused-1.0.0.jar
+0fe39000-0fe3a000 r--s 00002000 08:01 1358834    /home/dongyun/maven_repo/com/vlkan/flatbuffers/1.2.0-3f79e055/flatbuffers-1.2.0-3f79e055.jar
+0fe3a000-0fe50000 r--s 00124000 08:01 1198408    /home/dongyun/maven_repo/org/apache/ivy/ivy/2.4.0/ivy-2.4.0.jar
+0fe50000-0fe52000 r--s 00009000 08:01 1198405    /home/dongyun/maven_repo/com/fasterxml/jackson/module/jackson-module-paranamer/2.7.9/jackson-module-paranamer-2.7.9.jar
+0fe52000-0fe5f000 r--s 00071000 08:01 1198400    /home/dongyun/maven_repo/com/fasterxml/jackson/module/jackson-module-scala_2.11/2.6.7.1/jackson-module-scala_2.11-2.6.7.1.jar
+0fe5f000-0fe70000 r--s 0010c000 08:01 1198398    /home/dongyun/maven_repo/com/fasterxml/jackson/core/jackson-databind/2.6.7.1/jackson-databind-2.6.7.1.jar
+0fe70000-0fe72000 r--s 00004000 08:01 1198397    /home/dongyun/maven_repo/io/dropwizard/metrics/metrics-graphite/3.1.5/metrics-graphite-3.1.5.jar
+0fe72000-0fe74000 r--s 00008000 08:01 1198393    /home/dongyun/maven_repo/io/dropwizard/metrics/metrics-jvm/3.1.5/metrics-jvm-3.1.5.jar
+0fe74000-0fe78000 r--s 0001a000 08:01 1198390    /home/dongyun/maven_repo/io/dropwizard/metrics/metrics-core/3.1.5/metrics-core-3.1.5.jar
+0fe78000-0fe91000 r--s 0012c000 08:01 1198388    /home/dongyun/maven_repo/io/netty/netty/3.9.9.Final/netty-3.9.9.Final.jar
+0fe91000-0fed2000 r--s 0035a000 08:01 1198363    /home/dongyun/maven_repo/io/netty/netty-all/4.1.17.Final/netty-all-4.1.17.Final.jar
+0fed2000-0fee8000 r--s 000d3000 08:01 1198374    /home/dongyun/maven_repo/org/glassfish/jersey/core/jersey-server/2.22.2/jersey-server-2.22.2.jar
+0fee8000-0ff00000 r--s 000d6000 08:01 1198372    /home/dongyun/maven_repo/org/glassfish/jersey/bundles/repackaged/jersey-guava/2.22.2/jersey-guava-2.22.2.jar
+0ff00000-0fff7000 rw-p 00000000 00:00 0 
+0fff7000-10000000 ---p 00000000 00:00 0 
+10000000-100d3000 rw-p 00000000 00:00 0 
+100d3000-10100000 ---p 00000000 00:00 0 
+10100000-10200000 rw-p 00000000 00:00 0 
+10200000-102fa000 rw-p 00000000 00:00 0 
+102fa000-10300000 ---p 00000000 00:00 0 
+10300000-10302000 r--s 00001000 08:01 1326044    /home/dongyun/Downloads/spark-2.4.0/common/tags/target/spark-tags_2.11-2.4.0-tests.jar
+10302000-10305000 r--s 00028000 08:01 1198389    /home/dongyun/maven_repo/com/clearspring/analytics/stream/2.7.0/stream-2.7.0.jar
+10305000-10308000 r--s 0000e000 08:01 1198386    /home/dongyun/maven_repo/org/glassfish/jersey/containers/jersey-container-servlet-core/2.22.2/jersey-container-servlet-core-2.22.2.jar
+10308000-1030c000 r--s 0000c000 08:01 1198379    /home/dongyun/maven_repo/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar
+1030c000-10400000 r--s 00be3000 08:01 1341302    /home/dongyun/Downloads/spark-2.4.0/core/target/spark-core_2.11-2.4.0.jar
+10400000-104fb000 rw-p 00000000 00:00 0 
+104fb000-10500000 ---p 00000000 00:00 0 
+10500000-10600000 rw-p 00000000 00:00 0 
+10600000-10700000 rw-p 00000000 00:00 0 
+10700000-10701000 r--s 00003000 08:01 1198394    /home/dongyun/maven_repo/io/dropwizard/metrics/metrics-json/3.1.5/metrics-json-3.1.5.jar
+10701000-10703000 r--s 00003000 08:01 1198381    /home/dongyun/maven_repo/org/glassfish/jersey/containers/jersey-container-servlet/2.22.2/jersey-container-servlet-2.22.2.jar
+10703000-10705000 r--s 00010000 08:01 1198376    /home/dongyun/maven_repo/org/glassfish/jersey/media/jersey-media-jaxb/2.22.2/jersey-media-jaxb-2.22.2.jar
+10705000-10707000 r--s 00005000 08:01 1198368    /home/dongyun/maven_repo/javax/annotation/javax.annotation-api/1.2/javax.annotation-api-1.2.jar
+10707000-10708000 r--s 00003000 08:01 1326046    /home/dongyun/Downloads/spark-2.4.0/common/tags/target/spark-tags_2.11-2.4.0.jar
+10708000-10709000 r--s 00004000 08:01 1198373    /home/dongyun/maven_repo/org/glassfish/hk2/osgi-resource-locator/1.0.1/osgi-resource-locator-1.0.1.jar
+10709000-10717000 r--s 0009d000 08:01 1198367    /home/dongyun/maven_repo/org/glassfish/jersey/core/jersey-common/2.22.2/jersey-common-2.22.2.jar
+10717000-10719000 r--s 00007000 08:01 1182668    /home/dongyun/maven_repo/org/apache/maven/shared/file-management/3.0.0/file-management-3.0.0.jar
+10719000-10723000 r--s 000a5000 08:01 1198485    /home/dongyun/maven_repo/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA.jar
+10723000-10727000 r--s 00029000 08:01 1198366    /home/dongyun/maven_repo/org/glassfish/hk2/hk2-locator/2.4.0-b34/hk2-locator-2.4.0-b34.jar
+10727000-10728000 r--s 00001000 08:01 1198364    /home/dongyun/maven_repo/org/glassfish/hk2/external/javax.inject/2.4.0-b34/javax.inject-2.4.0-b34.jar
+10728000-1072a000 r--s 00002000 08:01 1198362    /home/dongyun/maven_repo/org/glassfish/hk2/external/aopalliance-repackaged/2.4.0-b34/aopalliance-repackaged-2.4.0-b34.jar
+1072a000-1072e000 r--s 0001a000 08:01 1198360    /home/dongyun/maven_repo/org/glassfish/hk2/hk2-utils/2.4.0-b34/hk2-utils-2.4.0-b34.jar
+1072e000-10733000 r--s 00027000 08:01 1198358    /home/dongyun/maven_repo/org/glassfish/hk2/hk2-api/2.4.0-b34/hk2-api-2.4.0-b34.jar
+10733000-10737000 r--s 00019000 08:01 1198356    /home/dongyun/maven_repo/javax/ws/rs/javax.ws.rs-api/2.0.1/javax.ws.rs-api-2.0.1.jar
+10737000-1073b000 r--s 00025000 08:01 1198354    /home/dongyun/maven_repo/org/glassfish/jersey/core/jersey-client/2.22.2/jersey-client-2.22.2.jar
+1073b000-10749000 r--s 00089000 08:01 1198350    /home/dongyun/maven_repo/org/json4s/json4s-scalap_2.11/3.5.3/json4s-scalap_2.11-3.5.3.jar
+10749000-1074c000 r--s 00014000 08:01 1198349    /home/dongyun/maven_repo/org/json4s/json4s-ast_2.11/3.5.3/json4s-ast_2.11-3.5.3.jar
+1074c000-10759000 r--s 0009c000 08:01 1198348    /home/dongyun/maven_repo/org/json4s/json4s-core_2.11/3.5.3/json4s-core_2.11-3.5.3.jar
+10759000-1075b000 r--s 0000a000 08:01 1198344    /home/dongyun/maven_repo/org/json4s/json4s-jackson_2.11/3.5.3/json4s-jackson_2.11-3.5.3.jar
+1075b000-10760000 r--s 0003e000 08:01 1198341    /home/dongyun/maven_repo/commons-net/commons-net/3.1/commons-net-3.1.jar
+10760000-10763000 r--s 0002f000 08:01 1198338    /home/dongyun/maven_repo/org/roaringbitmap/RoaringBitmap/0.5.11/RoaringBitmap-0.5.11.jar
+10763000-10765000 r--s 00238000 08:01 1198337    /home/dongyun/maven_repo/com/github/luben/zstd-jni/1.3.2-2/zstd-jni-1.3.2-2.jar
+10765000-10768000 r--s 00058000 08:01 1198335    /home/dongyun/maven_repo/org/lz4/lz4-java/1.4.0/lz4-java-1.4.0.jar
+10768000-1076a000 r--s 001eb000 08:01 1198331    /home/dongyun/maven_repo/org/xerial/snappy/snappy-java/1.1.7.1/snappy-java-1.1.7.1.jar
+1076a000-1076c000 r--s 00012000 08:01 1198333    /home/dongyun/maven_repo/com/ning/compress-lzf/1.0.3/compress-lzf-1.0.3.jar
+1076c000-1076d000 r--s 00002000 08:01 1198329    /home/dongyun/maven_repo/org/slf4j/slf4j-log4j12/1.7.16/slf4j-log4j12-1.7.16.jar
+1076d000-10776000 r--s 0006f000 08:01 1198327    /home/dongyun/maven_repo/log4j/log4j/1.2.17/log4j-1.2.17.jar
+10776000-10778000 r--s 00003000 08:01 1198325    /home/dongyun/maven_repo/org/slf4j/jcl-over-slf4j/1.7.16/jcl-over-slf4j-1.7.16.jar
+10778000-1077a000 r--s 00000000 08:01 1198323    /home/dongyun/maven_repo/org/slf4j/jul-to-slf4j/1.7.16/jul-to-slf4j-1.7.16.jar
+1077a000-1077d000 r--s 00006000 08:01 1198320    /home/dongyun/maven_repo/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar
+1077d000-10780000 r--s 00015000 08:01 1198314    /home/dongyun/maven_repo/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar
+10780000-10782000 r--s 00014000 08:01 1198313    /home/dongyun/maven_repo/org/eclipse/jetty/jetty-servlets/9.3.24.v20180605/jetty-servlets-9.3.24.v20180605.jar
+10782000-10788000 r--s 0003b000 08:01 1198312    /home/dongyun/maven_repo/org/eclipse/jetty/jetty-client/9.3.24.v20180605/jetty-client-9.3.24.v20180605.jar
+10788000-1078b000 r--s 00013000 08:01 1198311    /home/dongyun/maven_repo/org/eclipse/jetty/jetty-proxy/9.3.24.v20180605/jetty-proxy-9.3.24.v20180605.jar
+1078b000-1078e000 r--s 0001b000 08:01 1198308    /home/dongyun/maven_repo/org/eclipse/jetty/jetty-servlet/9.3.24.v20180605/jetty-servlet-9.3.24.v20180605.jar
+1078e000-1078f000 r--s 00003000 08:01 1198304    /home/dongyun/maven_repo/org/eclipse/jetty/jetty-continuation/9.3.24.v20180605/jetty-continuation-9.3.24.v20180605.jar
+1078f000-10792000 r--s 00022000 08:01 1198302    /home/dongyun/maven_repo/org/eclipse/jetty/jetty-http/9.3.24.v20180605/jetty-http-9.3.24.v20180605.jar
+10792000-10795000 r--s 0001b000 08:01 1198301    /home/dongyun/maven_repo/org/eclipse/jetty/jetty-io/9.3.24.v20180605/jetty-io-9.3.24.v20180605.jar
+10795000-1079d000 r--s 00078000 08:01 1198300    /home/dongyun/maven_repo/org/eclipse/jetty/jetty-server/9.3.24.v20180605/jetty-server-9.3.24.v20180605.jar
+1079d000-107a4000 r--s 00069000 08:01 1198297    /home/dongyun/maven_repo/org/eclipse/jetty/jetty-util/9.3.24.v20180605/jetty-util-9.3.24.v20180605.jar
+107a4000-107a7000 r--s 00015000 08:01 1198295    /home/dongyun/maven_repo/org/eclipse/jetty/jetty-security/9.3.24.v20180605/jetty-security-9.3.24.v20180605.jar
+107a7000-107a9000 r--s 00009000 08:01 1198294    /home/dongyun/maven_repo/org/eclipse/jetty/jetty-jndi/9.3.24.v20180605/jetty-jndi-9.3.24.v20180605.jar
+107a9000-107aa000 r--s 0000c000 08:01 1198291    /home/dongyun/maven_repo/org/eclipse/jetty/jetty-xml/9.3.24.v20180605/jetty-xml-9.3.24.v20180605.jar
+107aa000-107ad000 r--s 0001a000 08:01 1198288    /home/dongyun/maven_repo/org/eclipse/jetty/jetty-webapp/9.3.24.v20180605/jetty-webapp-9.3.24.v20180605.jar
+107ad000-107af000 r--s 0000c000 08:01 1198286    /home/dongyun/maven_repo/org/eclipse/jetty/jetty-plus/9.3.24.v20180605/jetty-plus-9.3.24.v20180605.jar
+107af000-107bb000 r--s 000b6000 08:01 1198285    /home/dongyun/maven_repo/org/apache/zookeeper/zookeeper/3.4.6/zookeeper-3.4.6.jar
+107bb000-107c1000 r--s 00028000 08:01 1198284    /home/dongyun/maven_repo/org/apache/curator/curator-framework/2.6.0/curator-framework-2.6.0.jar
+107c1000-107c8000 r--s 00036000 08:01 1198280    /home/dongyun/maven_repo/org/apache/curator/curator-recipes/2.6.0/curator-recipes-2.6.0.jar
+107c8000-107ca000 r--s 0000f000 08:01 1198278    /home/dongyun/maven_repo/javax/activation/activation/1.1.1/activation-1.1.1.jar
+107ca000-107cc000 r--s 0000b000 08:01 1326716    /home/dongyun/Downloads/spark-2.4.0/common/unsafe/target/spark-unsafe_2.11-2.4.0.jar
+107cc000-107cf000 r--s 0000f000 08:01 1182548    /home/dongyun/Downloads/spark-2.4.0/common/network-shuffle/target/spark-network-shuffle_2.11-2.4.0.jar
+107cf000-107fd000 r--s 0021a000 08:01 1326479    /home/dongyun/Downloads/spark-2.4.0/common/network-common/target/spark-network-common_2.11-2.4.0.jar
+107fd000-10800000 r--s 00009000 08:01 1198271    /home/dongyun/maven_repo/com/fasterxml/jackson/core/jackson-annotations/2.6.7/jackson-annotations-2.6.7.jar
+10800000-108fb000 rw-p 00000000 00:00 0 
+108fb000-10900000 ---p 00000000 00:00 0 
+10900000-10904000 r--s 0003c000 08:01 1198270    /home/dongyun/maven_repo/com/fasterxml/jackson/core/jackson-core/2.6.7/jackson-core-2.6.7.jar
+10904000-10907000 r--s 000fd000 08:01 1198266    /home/dongyun/maven_repo/org/fusesource/leveldbjni/leveldbjni-all/1.8/leveldbjni-all-1.8.jar
+10907000-10909000 r--s 0000b000 08:01 1326260    /home/dongyun/Downloads/spark-2.4.0/common/kvstore/target/spark-kvstore_2.11-2.4.0.jar
+10909000-1090b000 r--s 00011000 08:01 1182561    /home/dongyun/Downloads/spark-2.4.0/launcher/target/spark-launcher_2.11-2.4.0.jar
+1090b000-1090c000 r--s 00009000 08:01 1198261    /home/dongyun/maven_repo/org/apache/hadoop/hadoop-annotations/2.6.5/hadoop-annotations-2.6.5.jar
+1090c000-1090d000 r--s 0000e000 08:01 1198258    /home/dongyun/maven_repo/org/apache/hadoop/hadoop-mapreduce-client-jobclient/2.6.5/hadoop-mapreduce-client-jobclient-2.6.5.jar
+1090d000-1090e000 r--s 00006000 08:01 1198256    /home/dongyun/maven_repo/org/codehaus/jackson/jackson-xc/1.9.13/jackson-xc-1.9.13.jar
+1090e000-10910000 r--s 00004000 08:01 1198252    /home/dongyun/maven_repo/javax/xml/stream/stax-api/1.0-2/stax-api-1.0-2.jar
+10910000-10913000 r--s 00017000 08:01 1198250    /home/dongyun/maven_repo/javax/xml/bind/jaxb-api/2.2.2/jaxb-api-2.2.2.jar
+10913000-1092a000 r--s 00177000 08:01 1198171    /home/dongyun/maven_repo/org/apache/hadoop/hadoop-yarn-common/2.6.5/hadoop-yarn-common-2.6.5.jar
+1092a000-10943000 r--s 0015f000 08:01 1198248    /home/dongyun/maven_repo/org/apache/hadoop/hadoop-mapreduce-client-core/2.6.5/hadoop-mapreduce-client-core-2.6.5.jar
+10943000-1095d000 r--s 001b5000 08:01 1198244    /home/dongyun/maven_repo/org/apache/hadoop/hadoop-yarn-api/2.6.5/hadoop-yarn-api-2.6.5.jar
+1095d000-10963000 r--s 00049000 08:01 1198240    /home/dongyun/maven_repo/org/apache/hadoop/hadoop-yarn-server-common/2.6.5/hadoop-yarn-server-common-2.6.5.jar
+10963000-10964000 r--s 00009000 08:01 1198322    /home/dongyun/maven_repo/org/slf4j/slf4j-api/1.7.16/slf4j-api-1.7.16.jar
+10964000-10967000 r--s 00023000 08:01 1198239    /home/dongyun/maven_repo/org/apache/hadoop/hadoop-yarn-client/2.6.5/hadoop-yarn-client-2.6.5.jar
+10967000-1098b000 r--s 001cd000 08:01 1198317    /home/dongyun/maven_repo/org/apache/commons/commons-math3/3.4.1/commons-math3-3.4.1.jar
+1098b000-1098d000 r--s 0000f000 08:01 1198243    /home/dongyun/maven_repo/org/apache/hadoop/hadoop-mapreduce-client-shuffle/2.6.5/hadoop-mapreduce-client-shuffle-2.6.5.jar
+1098d000-10999000 r--s 0009d000 08:01 1198236    /home/dongyun/maven_repo/org/apache/hadoop/hadoop-mapreduce-client-common/2.6.5/hadoop-mapreduce-client-common-2.6.5.jar
+10999000-10a00000 r--s 0072d000 08:01 1198230    /home/dongyun/maven_repo/org/apache/hadoop/hadoop-hdfs/2.6.5/hadoop-hdfs-2.6.5.jar
+10a00000-10b00000 rw-p 00000000 00:00 0 
+10b00000-10bf9000 rw-p 00000000 00:00 0 
+10bf9000-10c00000 ---p 00000000 00:00 0 
+10c00000-10c01000 r--s 00004000 08:01 1198254    /home/dongyun/maven_repo/org/codehaus/jackson/jackson-jaxrs/1.9.13/jackson-jaxrs-1.9.13.jar
+10c01000-10c0b000 r--s 00078000 08:01 1198235    /home/dongyun/maven_repo/org/apache/hadoop/hadoop-mapreduce-client-app/2.6.5/hadoop-mapreduce-client-app-2.6.5.jar
+10c0b000-10c0f000 r--s 00028000 08:01 1198232    /home/dongyun/maven_repo/org/mortbay/jetty/jetty-util/6.1.26/jetty-util-6.1.26.jar
+10c0f000-10c11000 r--s 00006000 08:01 1198229    /home/dongyun/maven_repo/org/htrace/htrace-core/3.0.4/htrace-core-3.0.4.jar
+10c11000-10c13000 r--s 0000f000 08:01 1198225    /home/dongyun/maven_repo/org/apache/curator/curator-client/2.6.0/curator-client-2.6.0.jar
+10c13000-10c15000 r--s 00012000 08:01 1198224    /home/dongyun/maven_repo/org/apache/directory/api/api-util/1.0.0-M20/api-util-1.0.0-M20.jar
+10c15000-10c17000 r--s 00003000 08:01 1198220    /home/dongyun/maven_repo/org/apache/directory/api/api-asn1-api/1.0.0-M20/api-asn1-api-1.0.0-M20.jar
+10c17000-10c18000 r--s 0000a000 08:01 1198218    /home/dongyun/maven_repo/org/apache/directory/server/apacheds-i18n/2.0.0-M15/apacheds-i18n-2.0.0-M15.jar
+10c18000-10c2a000 r--s 00097000 08:01 1198217    /home/dongyun/maven_repo/org/apache/directory/server/apacheds-kerberos-codec/2.0.0-M15/apacheds-kerberos-codec-2.0.0-M15.jar
+10c2a000-10c31000 r--s 00049000 08:01 1198557    /home/dongyun/maven_repo/org/apache/httpcomponents/httpcore/4.4.10/httpcore-4.4.10.jar
+10c31000-10c3e000 r--s 000af000 08:01 1198469    /home/dongyun/maven_repo/org/apache/httpcomponents/httpclient/4.5.6/httpclient-4.5.6.jar
+10c3e000-10c41000 r--s 00014000 08:01 1198216    /home/dongyun/maven_repo/org/apache/hadoop/hadoop-auth/2.6.5/hadoop-auth-2.6.5.jar
+10c41000-10c46000 r--s 0002a000 08:01 1198212    /home/dongyun/maven_repo/com/google/code/gson/gson/2.2.4/gson-2.2.4.jar
+10c46000-10c4e000 r--s 0007b000 08:01 1198211    /home/dongyun/maven_repo/com/google/protobuf/protobuf-java/2.5.0/protobuf-java-2.5.0.jar
+10c4e000-10c52000 r--s 0002f000 08:01 1198208    /home/dongyun/maven_repo/commons-beanutils/commons-beanutils-core/1.8.0/commons-beanutils-core-1.8.0.jar
+10c52000-10c58000 r--s 00043000 08:01 1198203    /home/dongyun/maven_repo/commons-configuration/commons-configuration/1.6/commons-configuration-1.6.jar
+10c58000-10c5e000 r--s 00045000 08:01 1198200    /home/dongyun/maven_repo/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar
+10c5e000-10c61000 ---p 00000000 00:00 0 
+10c61000-10caf000 rw-p 00000000 00:00 0 
+10caf000-10cb2000 ---p 00000000 00:00 0 
+10cb2000-10e00000 rw-p 00000000 00:00 0          [stack:3249]
+10e00000-10f00000 rw-p 00000000 00:00 0 
+10f00000-11000000 rw-p 00000000 00:00 0 
+11000000-11100000 rw-p 00000000 00:00 0 
+11100000-11101000 r--s 00003000 08:01 1198198    /home/dongyun/maven_repo/xmlenc/xmlenc/0.52/xmlenc-0.52.jar
+11101000-11137000 r--s 002fe000 08:01 1198197    /home/dongyun/maven_repo/org/apache/hadoop/hadoop-common/2.6.5/hadoop-common-2.6.5.jar
+11137000-11138000 r--s 00006000 08:01 1198194    /home/dongyun/maven_repo/org/apache/hadoop/hadoop-client/2.6.5/hadoop-client-2.6.5.jar
+11138000-1113a000 r--s 0000d000 08:01 1198191    /home/dongyun/maven_repo/com/twitter/chill-java/0.9.3/chill-java-0.9.3.jar
+1113a000-1113b000 r--s 00006000 08:01 1358806    /home/dongyun/maven_repo/org/apache/orc/orc-shims/1.5.2/orc-shims-1.5.2.jar
+1113b000-1113d000 r--s 0000e000 08:01 1182619    /home/dongyun/maven_repo/org/codehaus/mojo/build-helper-maven-plugin/3.0.0/build-helper-maven-plugin-3.0.0.jar
+1113d000-1113e000 r--s 00001000 08:01 1198188    /home/dongyun/maven_repo/com/esotericsoftware/minlog/1.3.0/minlog-1.3.0.jar
+1113e000-11146000 r--s 0005d000 08:01 1198186    /home/dongyun/maven_repo/com/esotericsoftware/kryo-shaded/4.0.2/kryo-shaded-4.0.2.jar
+11146000-1114b000 r--s 00035000 08:01 1198184    /home/dongyun/maven_repo/com/twitter/chill_2.11/0.9.3/chill_2.11-0.9.3.jar
+1114b000-11152000 r--s 0003f000 08:01 1198180    /home/dongyun/maven_repo/commons-codec/commons-codec/1.10/commons-codec-1.10.jar
+11152000-11156000 r--s 0002a000 08:01 1198177    /home/dongyun/maven_repo/org/apache/avro/avro-mapred/1.8.2/avro-mapred-1.8.2-hadoop2.jar
+11156000-1115d000 r--s 00053000 08:01 1198172    /home/dongyun/maven_repo/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar
+1115d000-1116b000 r--s 000b1000 08:01 1198168    /home/dongyun/maven_repo/org/codehaus/jackson/jackson-mapper-asl/1.9.13/jackson-mapper-asl-1.9.13.jar
+1116b000-11200000 r--s 01110000 08:01 425338     /usr/java/jdk1.8.0_141/jre/lib/ext/jfxrt.jar
+11200000-112ff000 rw-p 00000000 00:00 0 
+112ff000-11300000 ---p 00000000 00:00 0 
+11300000-11400000 rw-p 00000000 00:00 0 
+11400000-11500000 rw-p 00000000 00:00 0 
+11500000-11503000 r--s 0001e000 08:01 1198179    /home/dongyun/maven_repo/org/apache/avro/avro-ipc/1.8.2/avro-ipc-1.8.2.jar
+11503000-11505000 r--s 00007000 08:01 1198170    /home/dongyun/maven_repo/com/thoughtworks/paranamer/paranamer/2.8/paranamer-2.8.jar
+11505000-11526000 r--s 0015c000 08:01 1198095    /home/dongyun/maven_repo/org/apache/avro/avro/1.8.2/avro-1.8.2.jar
+11526000-11530000 r--s 000ab000 08:01 1198564    /home/dongyun/maven_repo/org/scalactic/scalactic_2.11/3.0.3/scalactic_2.11-3.0.3.jar
+11530000-11534000 r--s 00035000 08:01 1198166    /home/dongyun/maven_repo/org/codehaus/jackson/jackson-core-asl/1.9.13/jackson-core-asl-1.9.13.jar
+11534000-1154f000 r--s 001d3000 08:01 425339     /usr/java/jdk1.8.0_141/jre/lib/ext/nashorn.jar
+1154f000-115a7000 r--s 00523000 08:01 1200261    /home/dongyun/maven_repo/org/scala-lang/scala-library/2.11.7/scala-library-2.11.7.jar
+115a7000-11600000 r--s 004f6000 08:01 1200269    /home/dongyun/maven_repo/org/scala-lang/scala-library/2.11.6/scala-library-2.11.6.jar
+11600000-11700000 rw-p 00000000 00:00 0 
+11700000-117fa000 rw-p 00000000 00:00 0 
+117fa000-11800000 ---p 00000000 00:00 0 
+11800000-11802000 r--s 00009000 08:01 425331     /usr/java/jdk1.8.0_141/jre/lib/ext/sunec.jar
+11802000-1181e000 r--s 00393000 08:01 425330     /usr/java/jdk1.8.0_141/jre/lib/ext/cldrdata.jar
+1181e000-11822000 r--s 0003a000 08:01 425335     /usr/java/jdk1.8.0_141/jre/lib/ext/sunpkcs11.jar
+11822000-11828000 r--s 0003f000 08:01 425332     /usr/java/jdk1.8.0_141/jre/lib/ext/sunjce_provider.jar
+11828000-11832000 r--s 00116000 08:01 425334     /usr/java/jdk1.8.0_141/jre/lib/ext/localedata.jar
+11832000-11837000 r--s 00084000 08:01 424778     /usr/java/jdk1.8.0_141/jre/lib/jfr.jar
+11837000-1184a000 r--s 00345000 08:01 425354     /usr/java/jdk1.8.0_141/jre/lib/resources.jar
+1184a000-1184d000 ---p 00000000 00:00 0 
+1184d000-1189b000 rw-p 00000000 00:00 0          [stack:3248]
+1189b000-1189c000 r--s 0000a000 08:01 425329     /usr/java/jdk1.8.0_141/jre/lib/ext/jaccess.jar
+1189c000-1189e000 r--s 00001000 08:01 425337     /usr/java/jdk1.8.0_141/jre/lib/ext/dnsns.jar
+1189e000-118a3000 r--s 002f9000 08:01 425328     /usr/java/jdk1.8.0_141/jre/lib/charsets.jar
+118a3000-118a6000 r--s 0001a000 08:01 425321     /usr/java/jdk1.8.0_141/jre/lib/jce.jar
+118a6000-118f3000 r--s 0041c000 08:01 1198402    /home/dongyun/maven_repo/org/scala-lang/scala-reflect/2.11.12/scala-reflect-2.11.12.jar
+118f3000-119f3000 rw-p 00000000 00:00 0 
+119f3000-11b00000 r--s 00dd7000 08:01 1200241    /home/dongyun/maven_repo/org/scala-lang/scala-compiler/2.11.12/scala-compiler-2.11.12.jar
+11b00000-11c00000 rw-p 00000000 00:00 0 
+11c00000-11c05000 r--s 00036000 08:01 470848     /home/dongyun/.zinc/0.3.5/compiler-interface-2.11.12-52.0/compiler-interface.jar
+11c05000-11c08000 ---p 00000000 00:00 0 
+11c08000-11c56000 rw-p 00000000 00:00 0 
+11c56000-11c59000 ---p 00000000 00:00 0 
+11c59000-11ca7000 rw-p 00000000 00:00 0 
+11ca7000-11d00000 r--s 00523000 08:01 1198342    /home/dongyun/maven_repo/org/scala-lang/scala-library/2.11.12/scala-library-2.11.12.jar
+11d00000-11e00000 rw-p 00000000 00:00 0 
+11e00000-11f00000 rw-p 00000000 00:00 0 
+11f00000-120ff000 rw-p 00000000 00:00 0 
+120ff000-12100000 ---p 00000000 00:00 0 
+12100000-12200000 rw-p 00000000 00:00 0 
+12200000-122fe000 rw-p 00000000 00:00 0 
+122fe000-12300000 ---p 00000000 00:00 0 
+12300000-123fd000 rw-p 00000000 00:00 0 
+123fd000-12400000 ---p 00000000 00:00 0 
+12400000-12500000 rw-p 00000000 00:00 0 
+12500000-125ff000 rw-p 00000000 00:00 0 
+125ff000-12600000 ---p 00000000 00:00 0 
+12600000-12601000 r--s 00010000 08:01 425333     /usr/java/jdk1.8.0_141/jre/lib/ext/zipfs.jar
+12601000-12604000 ---p 00000000 00:00 0 
+12604000-12618000 rw-p 00000000 00:00 0 
+12618000-12623000 r--s 0005d000 08:01 1200257    /home/dongyun/maven_repo/org/scala-lang/modules/scala-parser-combinators_2.11/1.0.4/scala-parser-combinators_2.11-1.0.4.jar
+12623000-1262d000 r--s 0009a000 08:01 1198567    /home/dongyun/maven_repo/org/scala-lang/modules/scala-xml_2.11/1.0.5/scala-xml_2.11-1.0.5.jar
+1262d000-1262e000 r--s 00004000 08:01 1200250    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-compiler-javac/2.8.2/plexus-compiler-javac-2.8.2.jar
+1262e000-12630000 r--s 00000000 08:01 1200248    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-compiler-manager/2.8.2/plexus-compiler-manager-2.8.2.jar
+12630000-12632000 r--s 00005000 08:01 1200245    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-compiler-api/2.8.2/plexus-compiler-api-2.8.2.jar
+12632000-12634000 r--s 00006000 08:01 1200240    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-java/0.9.2/plexus-java-0.9.2.jar
+12634000-12636000 r--s 00002000 08:01 1200236    /home/dongyun/maven_repo/org/apache/maven/shared/maven-shared-incremental/1.1/maven-shared-incremental-1.1.jar
+12636000-12638000 r--s 0000d000 08:01 1198605    /home/dongyun/maven_repo/org/apache/maven/plugins/maven-compiler-plugin/3.7.0/maven-compiler-plugin-3.7.0.jar
+12638000-1263b000 r--s 0000d000 08:01 1200170    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-interpolation/1.19/plexus-interpolation-1.19.jar
+1263b000-1263d000 r--s 00009000 08:01 1200164    /home/dongyun/maven_repo/org/apache/maven/shared/maven-filtering/1.2/maven-filtering-1.2.jar
+1263d000-12641000 r--s 00037000 08:01 1200162    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-utils/3.0.15/plexus-utils-3.0.15.jar
+12641000-12642000 r--s 00007000 08:01 1198598    /home/dongyun/maven_repo/org/apache/maven/plugins/maven-resources-plugin/2.7/maven-resources-plugin-2.7.jar
+12642000-12645000 ---p 00000000 00:00 0 
+12645000-12693000 rw-p 00000000 00:00 0          [stack:3218]
+12693000-12694000 r--s 00007000 08:01 1196044    /home/dongyun/maven_repo/org/apache/maven/plugins/maven-source-plugin/3.0.1/maven-source-plugin-3.0.1.jar
+12694000-126c0000 r--s 00208000 08:01 1200605    /home/dongyun/maven_repo/com/google/guava/guava/19.0/guava-19.0.jar
+126c0000-126c1000 r--s 0000b000 08:01 1200617    /home/dongyun/maven_repo/org/ow2/asm/asm-util/6.0_BETA/asm-util-6.0_BETA.jar
+126c1000-126c3000 r--s 00004000 08:01 1200612    /home/dongyun/maven_repo/org/ow2/asm/asm-analysis/6.0_BETA/asm-analysis-6.0_BETA.jar
+126c3000-126c5000 r--s 00004000 08:01 1200608    /home/dongyun/maven_repo/org/vafer/jdependency/1.2/jdependency-1.2.jar
+126c5000-126c7000 r--s 00023000 08:01 1200606    /home/dongyun/maven_repo/org/jdom/jdom/1.1.3/jdom-1.1.3.jar
+126c7000-126c9000 r--s 00007000 08:01 1200610    /home/dongyun/maven_repo/org/ow2/asm/asm-tree/6.0_BETA/asm-tree-6.0_BETA.jar
+126c9000-126cb000 r--s 0000b000 08:01 1200604    /home/dongyun/maven_repo/org/ow2/asm/asm-commons/6.0_BETA/asm-commons-6.0_BETA.jar
+126cb000-126cc000 r--s 0000d000 08:01 1200238    /home/dongyun/maven_repo/org/ow2/asm/asm/6.0_BETA/asm-6.0_BETA.jar
+126cc000-126ce000 r--s 0001a000 08:01 1200565    /home/dongyun/maven_repo/org/apache/maven/plugins/maven-shade-plugin/3.1.0/maven-shade-plugin-3.1.0.jar
+126ce000-126d1000 r--s 00018000 08:01 1200558    /home/dongyun/maven_repo/commons-io/commons-io/1.4/commons-io-1.4.jar
+126d1000-126d8000 r--s 00064000 08:01 1200557    /home/dongyun/maven_repo/org/apache/commons/commons-lang3/3.4/commons-lang3-3.4.jar
+126d8000-126dc000 r--s 00028000 08:01 1200555    /home/dongyun/maven_repo/org/mortbay/jetty/jetty-util/6.1.25/jetty-util-6.1.25.jar
+126dc000-126de000 r--s 0001f000 08:01 1200554    /home/dongyun/maven_repo/org/mortbay/jetty/servlet-api/2.5-20081211/servlet-api-2.5-20081211.jar
+126de000-126e5000 r--s 0007d000 08:01 1200552    /home/dongyun/maven_repo/org/mortbay/jetty/jetty/6.1.25/jetty-6.1.25.jar
+126e5000-126e7000 r--s 0000a000 08:01 1200547    /home/dongyun/maven_repo/org/apache/maven/doxia/doxia-integration-tools/1.7.1/doxia-integration-tools-1.7.1.jar
+126e7000-126e8000 r--s 0000c000 08:01 1200546    /home/dongyun/maven_repo/commons-logging/commons-logging/1.1/commons-logging-1.1.jar
+126e8000-126ec000 r--s 00020000 08:01 1198206    /home/dongyun/maven_repo/commons-digester/commons-digester/1.8/commons-digester-1.8.jar
+126ec000-126ed000 r--s 00001000 08:01 1200545    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-velocity/1.2/plexus-velocity-1.2.jar
+126ed000-126ee000 r--s 00003000 08:01 1200544    /home/dongyun/maven_repo/org/apache/maven/doxia/doxia-skin-model/1.7.1/doxia-skin-model-1.7.1.jar
+126ee000-126f0000 r--s 0000e000 08:01 1200539    /home/dongyun/maven_repo/org/apache/maven/doxia/doxia-site-renderer/1.7.1/doxia-site-renderer-1.7.1.jar
+126f0000-126f2000 r--s 0000d000 08:01 1200537    /home/dongyun/maven_repo/org/apache/maven/doxia/doxia-decoration-model/1.7.1/doxia-decoration-model-1.7.1.jar
+126f2000-126f4000 r--s 00018000 08:01 1200536    /home/dongyun/maven_repo/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar
+126f4000-126f6000 r--s 00008000 08:01 1200535    /home/dongyun/maven_repo/org/ow2/asm/asm-util/4.1/asm-util-4.1.jar
+126f6000-126f7000 r--s 00004000 08:01 1200533    /home/dongyun/maven_repo/org/ow2/asm/asm-analysis/4.1/asm-analysis-4.1.jar
+126f7000-126f9000 r--s 00004000 08:01 1200529    /home/dongyun/maven_repo/org/ow2/asm/asm-tree/4.1/asm-tree-4.1.jar
+126f9000-126fa000 r--s 0000b000 08:01 1200527    /home/dongyun/maven_repo/org/ow2/asm/asm/4.1/asm-4.1.jar
+126fa000-12700000 r--s 00028000 08:01 1200526    /home/dongyun/maven_repo/org/parboiled/parboiled-core/1.1.4/parboiled-core-1.1.4.jar
+12700000-128fc000 rw-p 00000000 00:00 0 
+128fc000-12900000 ---p 00000000 00:00 0 
+12900000-12a00000 rw-p 00000000 00:00 0 
+12a00000-12af9000 rw-p 00000000 00:00 0 
+12af9000-12b00000 ---p 00000000 00:00 0 
+12b00000-12bfa000 rw-p 00000000 00:00 0 
+12bfa000-12c00000 ---p 00000000 00:00 0 
+12c00000-12d00000 rw-p 00000000 00:00 0 
+12d00000-12e00000 rw-p 00000000 00:00 0 
+12e00000-12e02000 r--s 00010000 08:01 1200524    /home/dongyun/maven_repo/org/parboiled/parboiled-java/1.1.4/parboiled-java-1.1.4.jar
+12e02000-12e04000 r--s 0000d000 08:01 1200523    /home/dongyun/maven_repo/org/pegdown/pegdown/1.2.1/pegdown-1.2.1.jar
+12e04000-12e05000 r--s 00003000 08:01 1200519    /home/dongyun/maven_repo/org/apache/maven/doxia/doxia-module-markdown/1.7/doxia-module-markdown-1.7.jar
+12e05000-12e07000 r--s 00008000 08:01 1200517    /home/dongyun/maven_repo/org/apache/maven/doxia/doxia-module-fml/1.7/doxia-module-fml-1.7.jar
+12e07000-12e09000 r--s 00008000 08:01 1200515    /home/dongyun/maven_repo/org/apache/maven/doxia/doxia-module-xdoc/1.7/doxia-module-xdoc-1.7.jar
+12e09000-12e0b000 r--s 0000c000 08:01 1200513    /home/dongyun/maven_repo/org/apache/maven/doxia/doxia-module-apt/1.7/doxia-module-apt-1.7.jar
+12e0b000-12e0d000 r--s 00016000 08:01 1200511    /home/dongyun/maven_repo/xmlunit/xmlunit/1.5/xmlunit-1.5.jar
+12e0d000-12e0f000 r--s 0000a000 08:01 1200509    /home/dongyun/maven_repo/commons-codec/commons-codec/1.3/commons-codec-1.3.jar
+12e0f000-12e12000 r--s 00026000 08:01 1200508    /home/dongyun/maven_repo/org/apache/maven/doxia/doxia-core/1.7/doxia-core-1.7.jar
+12e12000-12e14000 r--s 00003000 08:01 1200505    /home/dongyun/maven_repo/org/apache/maven/doxia/doxia-module-xhtml/1.7/doxia-module-xhtml-1.7.jar
+12e14000-12e15000 r--s 00002000 08:01 1200501    /home/dongyun/maven_repo/org/apache/maven/doxia/doxia-logging-api/1.7/doxia-logging-api-1.7.jar
+12e15000-12e16000 r--s 00002000 08:01 1200499    /home/dongyun/maven_repo/org/apache/maven/doxia/doxia-sink-api/1.7/doxia-sink-api-1.7.jar
+12e16000-12e1d000 r--s 00056000 08:01 1200497    /home/dongyun/maven_repo/org/apache/commons/commons-compress/1.9/commons-compress-1.9.jar
+12e1d000-12e21000 r--s 00020000 08:01 1200495    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-archiver/2.9/plexus-archiver-2.9.jar
+12e21000-12e24000 r--s 00023000 08:01 1200168    /home/dongyun/maven_repo/org/apache/maven/shared/maven-shared-utils/0.3/maven-shared-utils-0.3.jar
+12e24000-12e26000 r--s 00005000 08:01 1200493    /home/dongyun/maven_repo/org/apache/maven/reporting/maven-reporting-exec/1.2/maven-reporting-exec-1.2.jar
+12e26000-12e29000 r--s 0001e000 08:01 1195992    /home/dongyun/maven_repo/org/apache/maven/plugins/maven-site-plugin/3.5.1/maven-site-plugin-3.5.1.jar
+12e29000-12e2c000 r--s 00012000 08:01 1200639    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-io/2.7.1/plexus-io-2.7.1.jar
+12e2c000-12e2f000 r--s 00023000 08:01 1200637    /home/dongyun/maven_repo/org/apache/maven/shared/maven-shared-utils/3.0.1/maven-shared-utils-3.0.1.jar
+12e2f000-12e30000 r--s 00005000 08:01 1200635    /home/dongyun/maven_repo/org/apache/maven/maven-archiver/3.1.1/maven-archiver-3.1.1.jar
+12e30000-12e31000 r--s 00006000 08:01 1200981    /home/dongyun/maven_repo/org/apache/maven/plugins/maven-jar-plugin/3.0.2/maven-jar-plugin-3.0.2.jar
+12e31000-12e32000 r--s 00002000 08:01 1200975    /home/dongyun/maven_repo/org/apache/maven/doxia/doxia-sink-api/1.0/doxia-sink-api-1.0.jar
+12e32000-12e35000 ---p 00000000 00:00 0 
+12e35000-12e83000 rw-p 00000000 00:00 0          [stack:3217]
+12e83000-12e89000 r--s 00047000 08:01 1200242    /home/dongyun/maven_repo/com/thoughtworks/qdox/qdox/2.0-M7/qdox-2.0-M7.jar
+12e89000-12e91000 r--s 00045000 08:01 1198571    /home/dongyun/maven_repo/junit/junit/4.12/junit-4.12.jar
+12e91000-12f91000 rw-p 00000000 00:00 0 
+12f91000-12faf000 r--s 001cf000 08:01 1200130    /home/dongyun/maven_repo/org/apache/ant/ant/1.9.4/ant-1.9.4.jar
+12faf000-130af000 rw-p 00000000 00:00 0 
+130af000-130b2000 ---p 00000000 00:00 0 
+130b2000-13100000 rw-p 00000000 00:00 0          [stack:3214]
+13100000-132f9000 rw-p 00000000 00:00 0 
+132f9000-13300000 ---p 00000000 00:00 0 
+13300000-13400000 rw-p 00000000 00:00 0 
+13400000-134f9000 rw-p 00000000 00:00 0 
+134f9000-13500000 ---p 00000000 00:00 0 
+13500000-13600000 rw-p 00000000 00:00 0 
+13600000-13700000 rw-p 00000000 00:00 0 
+13700000-137f9000 rw-p 00000000 00:00 0 
+137f9000-13800000 ---p 00000000 00:00 0 
+13800000-13801000 r--s 00002000 08:01 1200974    /home/dongyun/maven_repo/org/apache/maven/reporting/maven-reporting-api/2.0.9/maven-reporting-api-2.0.9.jar
+13801000-13802000 r--s 00005000 08:01 1196092    /home/dongyun/maven_repo/org/scalatest/scalatest-maven-plugin/1.0/scalatest-maven-plugin-1.0.jar
+13802000-13804000 r--s 00019000 08:01 1200897    /home/dongyun/maven_repo/org/ow2/asm/asm/6.1.1/asm-6.1.1.jar
+13804000-13806000 r--s 00007000 08:01 1200894    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-java/0.9.8/plexus-java-0.9.8.jar
+13806000-1380a000 r--s 0003f000 08:01 1200892    /home/dongyun/maven_repo/org/apache/maven/surefire/surefire-booter/2.22.0/surefire-booter-2.22.0.jar
+1380a000-1380c000 r--s 00002000 08:01 1200890    /home/dongyun/maven_repo/org/apache/maven/surefire/surefire-logger-api/2.22.0/surefire-logger-api-2.22.0.jar
+1380c000-13811000 r--s 00029000 08:01 1200888    /home/dongyun/maven_repo/org/apache/maven/surefire/surefire-api/2.22.0/surefire-api-2.22.0.jar
+13811000-13812000 r--s 00003000 08:01 1200886    /home/dongyun/maven_repo/org/apache/maven/plugin-tools/maven-plugin-annotations/3.5/maven-plugin-annotations-3.5.jar
+13812000-1381b000 r--s 00077000 08:01 1200884    /home/dongyun/maven_repo/org/apache/maven/surefire/maven-surefire-common/2.22.0/maven-surefire-common-2.22.0.jar
+1381b000-1381c000 r--s 00009000 08:01 1196084    /home/dongyun/maven_repo/org/apache/maven/plugins/maven-surefire-plugin/2.22.0/maven-surefire-plugin-2.22.0.jar
+1381c000-1381d000 r--s 00004000 08:01 1200132    /home/dongyun/maven_repo/org/apache/ant/ant-launcher/1.9.4/ant-launcher-1.9.4.jar
+1381d000-13821000 r--s 00038000 08:01 1200128    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-utils/3.0.20/plexus-utils-3.0.20.jar
+13821000-13823000 r--s 0000b000 08:01 1200126    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-interpolation/1.11/plexus-interpolation-1.11.jar
+13823000-13824000 r--s 00008000 08:01 1198587    /home/dongyun/maven_repo/org/apache/maven/plugins/maven-antrun-plugin/1.8/maven-antrun-plugin-1.8.jar
+13824000-13826000 r--s 00002000 08:01 1200054    /home/dongyun/maven_repo/org/apache/apache-jar-resource-bundle/1.4/apache-jar-resource-bundle-1.4.jar
+13826000-1382a000 r--s 0003c000 08:01 1200052    /home/dongyun/maven_repo/commons-lang/commons-lang/2.4/commons-lang-2.4.jar
+1382a000-13838000 r--s 0007f000 08:01 1200050    /home/dongyun/maven_repo/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar
+13838000-13840000 r--s 00066000 08:01 1200048    /home/dongyun/maven_repo/org/apache/velocity/velocity/1.7/velocity-1.7.jar
+13840000-13844000 r--s 00034000 08:01 1200047    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-utils/1.5.15/plexus-utils-1.5.15.jar
+13844000-13846000 r--s 0000d000 08:01 1200043    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-interpolation/1.12/plexus-interpolation-1.12.jar
+13846000-13848000 r--s 00004000 08:01 1200041    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-resources/1.0-alpha-7/plexus-resources-1.0-alpha-7.jar
+13848000-13849000 r--s 00001000 08:01 1200040    /home/dongyun/maven_repo/org/sonatype/plexus/plexus-build-api/0.0.4/plexus-build-api-0.0.4.jar
+13849000-1384b000 r--s 00009000 08:01 1200037    /home/dongyun/maven_repo/org/apache/maven/shared/maven-filtering/1.1/maven-filtering-1.1.jar
+1384b000-1384d000 r--s 00006000 08:01 1199997    /home/dongyun/maven_repo/org/apache/maven/shared/maven-common-artifact-filters/1.4/maven-common-artifact-filters-1.4.jar
+1384d000-1384f000 r--s 00002000 08:01 1200033    /home/dongyun/maven_repo/org/apache/maven/shared/maven-artifact-resolver/1.0/maven-artifact-resolver-1.0.jar
+1384f000-13857000 r--s 00049000 08:01 1200018    /home/dongyun/maven_repo/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.jar
+13857000-13859000 r--s 00002000 08:01 1200016    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-interactivity-api/1.0-alpha-4/plexus-interactivity-api-1.0-alpha-4.jar
+13859000-1385b000 r--s 00009000 08:01 1198539    /home/dongyun/maven_repo/commons-cli/commons-cli/1.2/commons-cli-1.2.jar
+1385b000-1385c000 r--s 00002000 08:01 1200005    /home/dongyun/maven_repo/org/apache/maven/doxia/doxia-logging-api/1.1/doxia-logging-api-1.1.jar
+1385c000-1385e000 r--s 00002000 08:01 1200004    /home/dongyun/maven_repo/org/apache/maven/doxia/doxia-sink-api/1.1/doxia-sink-api-1.1.jar
+1385e000-1385f000 r--s 00002000 08:01 1200003    /home/dongyun/maven_repo/org/apache/maven/reporting/maven-reporting-api/2.2.1/maven-reporting-api-2.2.1.jar
+1385f000-13861000 r--s 00003000 08:01 1199998    /home/dongyun/maven_repo/org/slf4j/jcl-over-slf4j/1.5.6/jcl-over-slf4j-1.5.6.jar
+13861000-13863000 r--s 00001000 08:01 1199994    /home/dongyun/maven_repo/org/slf4j/slf4j-jdk14/1.5.6/slf4j-jdk14-1.5.6.jar
+13863000-13864000 r--s 00010000 08:01 1195973    /home/dongyun/maven_repo/org/apache/maven/plugins/maven-remote-resources-plugin/1.5/maven-remote-resources-plugin-1.5.jar
+13864000-13871000 r--s 00083000 08:01 1198467    /home/dongyun/maven_repo/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar
+13871000-13876000 r--s 00041000 08:01 1198506    /home/dongyun/maven_repo/commons-lang/commons-lang/2.6/commons-lang-2.6.jar
+13876000-1387a000 r--s 00025000 08:01 1199795    /home/dongyun/maven_repo/org/apache/maven/shared/maven-shared-utils/3.2.0/maven-shared-utils-3.2.0.jar
+1387a000-1387f000 r--s 0001a000 08:01 1199793    /home/dongyun/maven_repo/org/apache/maven/shared/maven-artifact-transfer/0.9.1/maven-artifact-transfer-0.9.1.jar
+1387f000-13881000 r--s 00007000 08:01 1199792    /home/dongyun/maven_repo/org/apache/maven/shared/maven-dependency-tree/3.0.1/maven-dependency-tree-3.0.1.jar
+13881000-13882000 r--s 0000c000 08:01 1199788    /home/dongyun/maven_repo/org/ow2/asm/asm/5.0.2/asm-5.0.2.jar
+13882000-13884000 r--s 00007000 08:01 1199787    /home/dongyun/maven_repo/org/apache/maven/shared/maven-dependency-analyzer/1.7/maven-dependency-analyzer-1.7.jar
+13884000-13887000 r--s 00011000 08:01 1199786    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-io/2.4/plexus-io-2.4.jar
+13887000-13889000 r--s 00008000 08:01 1199781    /home/dongyun/maven_repo/org/apache/maven/shared/maven-shared-io/1.1/maven-shared-io-1.1.jar
+13889000-1388b000 r--s 00008000 08:01 1199780    /home/dongyun/maven_repo/org/apache/maven/shared/file-management/1.2.1/file-management-1.2.1.jar
+1388b000-1388f000 r--s 00015000 08:01 1198174    /home/dongyun/maven_repo/org/tukaani/xz/1.5/xz-1.5.jar
+1388f000-13891000 r--s 0000d000 08:01 1199775    /home/dongyun/maven_repo/org/iq80/snappy/snappy/0.4/snappy-0.4.jar
+13891000-13899000 r--s 00060000 08:01 1199774    /home/dongyun/maven_repo/org/apache/commons/commons-compress/1.11/commons-compress-1.11.jar
+13899000-1389e000 r--s 00029000 08:01 1199773    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-archiver/3.4/plexus-archiver-3.4.jar
+1389e000-138a1000 r--s 0001b000 08:01 1199769    /home/dongyun/maven_repo/org/apache/struts/struts-tiles/1.3.8/struts-tiles-1.3.8.jar
+138a1000-138a6000 r--s 00039000 08:01 1199768    /home/dongyun/maven_repo/org/apache/struts/struts-taglib/1.3.8/struts-taglib-1.3.8.jar
+138a6000-138ab000 r--s 00053000 08:01 1199766    /home/dongyun/maven_repo/antlr/antlr/2.7.2/antlr-2.7.2.jar
+138ab000-138b1000 r--s 0004b000 08:01 1199763    /home/dongyun/maven_repo/org/apache/struts/struts-core/1.3.8/struts-core-1.3.8.jar
+138b1000-138b3000 r--s 00005000 08:01 1199762    /home/dongyun/maven_repo/sslext/sslext/1.2-0/sslext-1.2-0.jar
+138b3000-138bb000 r--s 00068000 08:01 1199759    /home/dongyun/maven_repo/dom4j/dom4j/1.1/dom4j-1.1.jar
+138bb000-138bd000 r--s 00014000 08:01 1199758    /home/dongyun/maven_repo/commons-chain/commons-chain/1.1/commons-chain-1.1.jar
+138bd000-138c3000 r--s 0004f000 08:01 1199757    /home/dongyun/maven_repo/org/apache/velocity/velocity-tools/2.0/velocity-tools-2.0.jar
+138c3000-138c5000 r--s 0000e000 08:01 1198411    /home/dongyun/maven_repo/oro/oro/2.0.8/oro-2.0.8.jar
+138c5000-138cd000 r--s 00058000 08:01 1199755    /home/dongyun/maven_repo/org/apache/velocity/velocity/1.5/velocity-1.5.jar
+138cd000-138ce000 r--s 00001000 08:01 1199753    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-velocity/1.1.7/plexus-velocity-1.1.7.jar
+138ce000-138cf000 r--s 00002000 08:01 1199749    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-i18n/1.0-beta-7/plexus-i18n-1.0-beta-7.jar
+138cf000-138d1000 r--s 00008000 08:01 1199748    /home/dongyun/maven_repo/org/apache/maven/doxia/doxia-module-fml/1.4/doxia-module-fml-1.4.jar
+138d1000-138d2000 r--s 00003000 08:01 1199743    /home/dongyun/maven_repo/org/apache/maven/doxia/doxia-module-xhtml/1.4/doxia-module-xhtml-1.4.jar
+138d2000-138d3000 r--s 0000e000 08:01 1199742    /home/dongyun/maven_repo/org/apache/maven/doxia/doxia-decoration-model/1.4/doxia-decoration-model-1.4.jar
+138d3000-138d5000 r--s 0000b000 08:01 1199741    /home/dongyun/maven_repo/org/apache/maven/doxia/doxia-site-renderer/1.4/doxia-site-renderer-1.4.jar
+138d5000-138d6000 r--s 00002000 08:01 1199740    /home/dongyun/maven_repo/org/apache/maven/doxia/doxia-logging-api/1.4/doxia-logging-api-1.4.jar
+138d6000-138d8000 r--s 00008000 08:01 1199733    /home/dongyun/maven_repo/commons-logging/commons-logging/1.0.4/commons-logging-1.0.4.jar
+138d8000-138dc000 r--s 00026000 08:01 1199732    /home/dongyun/maven_repo/commons-digester/commons-digester/1.6/commons-digester-1.6.jar
+138dc000-138e1000 r--s 0002a000 08:01 1198207    /home/dongyun/maven_repo/commons-beanutils/commons-beanutils/1.7.0/commons-beanutils-1.7.0.jar
+138e1000-138e8000 r--s 00041000 08:01 1199725    /home/dongyun/maven_repo/org/apache/httpcomponents/httpclient/4.0.2/httpclient-4.0.2.jar
+138e8000-13900000 r--s 00115000 08:01 1198234    /home/dongyun/maven_repo/xerces/xercesImpl/2.9.1/xercesImpl-2.9.1.jar
+13900000-139fa000 rw-p 00000000 00:00 0 
+139fa000-13a00000 ---p 00000000 00:00 0 
+13a00000-13a01000 r--s 00002000 08:01 1199737    /home/dongyun/maven_repo/org/apache/maven/doxia/doxia-sink-api/1.4/doxia-sink-api-1.4.jar
+13a01000-13a04000 r--s 0001f000 08:01 1199729    /home/dongyun/maven_repo/commons-validator/commons-validator/1.3.1/commons-validator-1.3.1.jar
+13a04000-13b00000 r--s 00cc7000 08:01 1199202    /home/dongyun/maven_repo/org/scala-lang/scala-compiler/2.10.3/scala-compiler-2.10.3.jar
+13b00000-13bf9000 rw-p 00000000 00:00 0 
+13bf9000-13c00000 ---p 00000000 00:00 0 
+13c00000-13c05000 r--s 00026000 08:01 1199727    /home/dongyun/maven_repo/org/apache/httpcomponents/httpcore/4.0.1/httpcore-4.0.1.jar
+13c05000-13c0d000 r--s 00028000 08:01 1199723    /home/dongyun/maven_repo/xml-apis/xml-apis/1.3.04/xml-apis-1.3.04.jar
+13c0d000-13c11000 r--s 00022000 08:01 1199721    /home/dongyun/maven_repo/org/apache/maven/doxia/doxia-core/1.2/doxia-core-1.2.jar
+13c11000-13c12000 r--s 00004000 08:01 1199719    /home/dongyun/maven_repo/org/apache/maven/reporting/maven-reporting-impl/2.3/maven-reporting-impl-2.3.jar
+13c12000-13c15000 r--s 00026000 08:01 1196007    /home/dongyun/maven_repo/org/apache/maven/plugins/maven-dependency-plugin/3.0.2/maven-dependency-plugin-3.0.2.jar
+13c15000-13c16000 r--s 00007000 08:01 1199207    /home/dongyun/maven_repo/com/typesafe/sbt/compiler-interface/0.13.5/compiler-interface-0.13.5-sources.jar
+13c16000-13c18000 r--s 0000b000 08:01 1199205    /home/dongyun/maven_repo/com/typesafe/sbt/sbt-interface/0.13.5/sbt-interface-0.13.5.jar
+13c18000-13c4d000 r--s 002da000 08:01 1199203    /home/dongyun/maven_repo/org/scala-lang/scala-reflect/2.10.3/scala-reflect-2.10.3.jar
+13c4d000-13c75000 r--s 001f5000 08:01 1199201    /home/dongyun/maven_repo/com/typesafe/sbt/incremental-compiler/0.13.5/incremental-compiler-0.13.5.jar
+13c75000-13ce7000 r--s 0065a000 08:01 1199200    /home/dongyun/maven_repo/org/scala-lang/scala-library/2.10.4/scala-library-2.10.4.jar
+13ce7000-13cee000 r--s 00059000 08:01 1199198    /home/dongyun/maven_repo/com/typesafe/zinc/zinc/0.3.5/zinc-0.3.5.jar
+13cee000-13cf0000 r--s 00006000 08:01 1199196    /home/dongyun/maven_repo/org/apache/maven/shared/maven-invoker/2.0.11/maven-invoker-2.0.11.jar
+13cf0000-13cf1000 r--s 00002000 08:01 1199190    /home/dongyun/maven_repo/org/apache/maven/doxia/doxia-logging-api/1.1.2/doxia-logging-api-1.1.2.jar
+13cf1000-13cf3000 r--s 00002000 08:01 1199188    /home/dongyun/maven_repo/org/apache/maven/doxia/doxia-sink-api/1.1.2/doxia-sink-api-1.1.2.jar
+13cf3000-13cf5000 r--s 00004000 08:01 1199187    /home/dongyun/maven_repo/org/apache/maven/maven-archiver/2.5/maven-archiver-2.5.jar
+13cf5000-13cf8000 r--s 0000c000 08:01 1199174    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-io/2.0.2/plexus-io-2.0.2.jar
+13cf8000-13cfb000 r--s 0001b000 08:01 1199172    /home/dongyun/maven_repo/junit/junit/3.8.1/junit-3.8.1.jar
+13cfb000-13d00000 r--s 00029000 08:01 1199168    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-archiver/2.1/plexus-archiver-2.1.jar
+13d00000-13dff000 rw-p 00000000 00:00 0 
+13dff000-13e00000 ---p 00000000 00:00 0 
+13e00000-13efb000 rw-p 00000000 00:00 0 
+13efb000-13f00000 ---p 00000000 00:00 0 
+13f00000-14000000 rw-p 00000000 00:00 0 
+14000000-14100000 rw-p 00000000 00:00 0 
+14100000-14200000 rw-p 00000000 00:00 0 
+14200000-14300000 rw-p 00000000 00:00 0 
+14300000-14400000 rw-p 00000000 00:00 0 
+14400000-14500000 rw-p 00000000 00:00 0 
+14500000-14600000 rw-p 00000000 00:00 0 
+14600000-14700000 rw-p 00000000 00:00 0 
+14700000-147ff000 rw-p 00000000 00:00 0 
+147ff000-14800000 ---p 00000000 00:00 0 
+14800000-148ec000 rw-p 00000000 00:00 0 
+148ec000-14900000 ---p 00000000 00:00 0 
+14900000-14904000 r--s 00034000 08:01 1199166    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-utils/3.0/plexus-utils-3.0.jar
+14904000-14906000 r--s 0000b000 08:01 1199164    /home/dongyun/maven_repo/org/apache/commons/commons-exec/1.1/commons-exec-1.1.jar
+14906000-14908000 r--s 00007000 08:01 1199159    /home/dongyun/maven_repo/org/apache/maven/shared/maven-dependency-tree/1.2/maven-dependency-tree-1.2.jar
+14908000-14927000 r--s 00152000 08:01 1199157    /home/dongyun/maven_repo/org/sonatype/sisu/sisu-guava/0.9.9/sisu-guava-0.9.9.jar
+14927000-1492f000 r--s 00050000 08:01 1199156    /home/dongyun/maven_repo/org/sonatype/sisu/sisu-guice/3.1.0/sisu-guice-3.1.0-no_aop.jar
+1492f000-14936000 r--s 00040000 08:01 1199152    /home/dongyun/maven_repo/org/sonatype/sisu/sisu-inject-bean/2.3.0/sisu-inject-bean-2.3.0.jar
+14936000-1493a000 r--s 0001c000 08:01 1199149    /home/dongyun/maven_repo/org/sonatype/aether/aether-util/1.13.1/aether-util-1.13.1.jar
+1493a000-1493b000 r--s 00002000 08:01 1199125    /home/dongyun/maven_repo/org/apache/maven/reporting/maven-reporting-api/3.0/maven-reporting-api-3.0.jar
+1493b000-1493e000 r--s 0001b000 08:01 1196037    /home/dongyun/maven_repo/net/alchim31/maven/scala-maven-plugin/3.2.2/scala-maven-plugin-3.2.2.jar
+1493e000-14942000 r--s 0001d000 08:01 1198159    /home/dongyun/maven_repo/org/eclipse/aether/aether-util/0.9.0.M2/aether-util-0.9.0.M2.jar
+14942000-14945000 r--s 0000d000 08:01 1198158    /home/dongyun/maven_repo/org/apache/maven/shared/maven-dependency-tree/2.2/maven-dependency-tree-2.2.jar
+14945000-1494a000 r--s 00040000 08:01 1198154    /home/dongyun/maven_repo/org/beanshell/bsh/2.0b4/bsh-2.0b4.jar
+1494a000-14950000 r--s 00033000 08:01 1198153    /home/dongyun/maven_repo/commons-codec/commons-codec/1.6/commons-codec-1.6.jar
+14950000-14958000 r--s 0006e000 08:01 1198150    /home/dongyun/maven_repo/org/apache/commons/commons-lang3/3.5/commons-lang3-3.5.jar
+14958000-1495c000 r--s 0002f000 08:01 1198149    /home/dongyun/maven_repo/commons-io/commons-io/2.5/commons-io-2.5.jar
+1495c000-1495f000 r--s 00025000 08:01 1198148    /home/dongyun/maven_repo/org/apache/maven/shared/maven-shared-utils/3.1.0/maven-shared-utils-3.1.0.jar
+1495f000-14962000 r--s 0000d000 08:01 1198146    /home/dongyun/maven_repo/org/apache/maven/shared/maven-common-artifact-filters/3.0.1/maven-common-artifact-filters-3.0.1.jar
+14962000-14964000 r--s 00018000 08:01 1198142    /home/dongyun/maven_repo/org/apache/maven/enforcer/enforcer-rules/3.0.0-M1/enforcer-rules-3.0.0-M1.jar
+14964000-14966000 r--s 00009000 08:01 1198139    /home/dongyun/maven_repo/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+14966000-1496c000 r--s 00036000 08:01 1198138    /home/dongyun/maven_repo/junit/junit/4.11/junit-4.11.jar
+1496c000-1496d000 r--s 00002000 08:01 1198133    /home/dongyun/maven_repo/org/apache/maven/enforcer/enforcer-api/3.0.0-M1/enforcer-api-3.0.0-M1.jar
+1496d000-14971000 r--s 00039000 08:01 1198132    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-utils/3.0.24/plexus-utils-3.0.24.jar
+14971000-14973000 r--s 00002000 08:01 1198131    /home/dongyun/maven_repo/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar
+14973000-14974000 r--s 00006000 08:01 1198128    /home/dongyun/maven_repo/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.jar
+14974000-14976000 r--s 00000000 08:01 1198127    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-component-annotations/1.6/plexus-component-annotations-1.6.jar
+14976000-14978000 r--s 0000d000 08:01 1198120    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-interpolation/1.14/plexus-interpolation-1.14.jar
+14978000-1497c000 r--s 00017000 08:01 1198119    /home/dongyun/maven_repo/org/sonatype/aether/aether-util/1.7/aether-util-1.7.jar
+1497c000-1497e000 r--s 00005000 08:01 1196020    /home/dongyun/maven_repo/org/apache/maven/plugins/maven-enforcer-plugin/3.0.0-M1/maven-enforcer-plugin-3.0.0-M1.jar
+1497e000-14980000 r--s 00006000 08:01 1200166    /home/dongyun/maven_repo/com/google/code/findbugs/jsr305/2.0.1/jsr305-2.0.1.jar
+14980000-14984000 r--s 0002a000 08:01 1198505    /home/dongyun/maven_repo/commons-io/commons-io/2.4/commons-io-2.4.jar
+14984000-14987000 r--s 00023000 08:01 1201002    /home/dongyun/maven_repo/org/apache/maven/shared/maven-shared-utils/3.0.0/maven-shared-utils-3.0.0.jar
+14987000-14992000 r--s 00069000 08:01 1198101    /home/dongyun/maven_repo/org/sonatype/sisu/sisu-guice/2.1.7/sisu-guice-2.1.7-noaop.jar
+14992000-14997000 r--s 00021000 08:01 1198096    /home/dongyun/maven_repo/org/sonatype/sisu/sisu-inject-bean/1.4.2/sisu-inject-bean-1.4.2.jar
+14997000-14999000 r--s 00000000 08:01 1199158    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.jar
+14999000-1499d000 r--s 00033000 08:01 1200234    /home/dongyun/maven_repo/org/codehaus/plexus/plexus-utils/2.0.4/plexus-utils-2.0.4.jar
+1499d000-1499f000 r--s 00006000 08:01 1200988    /home/dongyun/maven_repo/org/apache/maven/plugins/maven-clean-plugin/3.0.0/maven-clean-plugin-3.0.0.jar
+1499f000-149ae000 r-xp 00000000 08:01 424991     /usr/java/jdk1.8.0_141/jre/lib/i386/libnio.so
+149ae000-149af000 rw-p 0000e000 08:01 424991     /usr/java/jdk1.8.0_141/jre/lib/i386/libnio.so
+149af000-149c4000 r-xp 00000000 08:01 425315     /usr/java/jdk1.8.0_141/jre/lib/i386/libnet.so
+149c4000-149c5000 rw-p 00015000 08:01 425315     /usr/java/jdk1.8.0_141/jre/lib/i386/libnet.so
+149c5000-149ca000 r--s 0009a000 08:01 425364     /usr/java/jdk1.8.0_141/jre/lib/jsse.jar
+149ca000-149f7000 r--s 001de000 08:01 493355     /home/dongyun/apache-maven-3.5.4/lib/wagon-http-3.1.0-shaded.jar
+149f7000-149f8000 r--s 0000a000 08:01 493321     /home/dongyun/apache-maven-3.5.4/lib/maven-settings-3.5.4.jar
+149f8000-14a00000 r--s 0006e000 08:01 493325     /home/dongyun/apache-maven-3.5.4/lib/commons-lang3-3.5.jar
+14a00000-14afe000 rw-p 00000000 00:00 0 
+14afe000-14b00000 ---p 00000000 00:00 0 
+14b00000-14b02000 r--s 00003000 08:01 493356     /home/dongyun/apache-maven-3.5.4/lib/jcl-over-slf4j-1.7.25.jar
+14b02000-14b04000 r--s 0000f000 08:01 493342     /home/dongyun/apache-maven-3.5.4/lib/maven-resolver-provider-3.5.4.jar
+14b04000-14b05000 r--s 00000000 08:01 493338     /home/dongyun/apache-maven-3.5.4/lib/javax.inject-1.jar
+14b05000-14b07000 r--s 00000000 08:01 493327     /home/dongyun/apache-maven-3.5.4/lib/plexus-component-annotations-1.7.1.jar
+14b07000-14b08000 r--s 00005000 08:01 493360     /home/dongyun/apache-maven-3.5.4/lib/maven-slf4j-provider-3.5.4.jar
+14b08000-14b0c000 r--s 00023000 08:01 493345     /home/dongyun/apache-maven-3.5.4/lib/maven-resolver-util-1.1.1.jar
+14b0c000-14b0f000 r--s 00011000 08:01 493326     /home/dongyun/apache-maven-3.5.4/lib/plexus-interpolation-1.24.jar
+14b0f000-14b13000 r--s 0002f000 08:01 493348     /home/dongyun/apache-maven-3.5.4/lib/commons-io-2.5.jar
+14b13000-14b14000 r--s 00001000 08:01 493337     /home/dongyun/apache-maven-3.5.4/lib/jsr250-api-1.0.jar
+14b14000-14b43000 r--s 00226000 08:01 493341     /home/dongyun/apache-maven-3.5.4/lib/guava-20.0.jar
+14b43000-14b45000 r--s 00009000 08:01 493323     /home/dongyun/apache-maven-3.5.4/lib/maven-settings-builder-3.5.4.jar
+14b45000-14b49000 r--s 0003c000 08:01 493322     /home/dongyun/apache-maven-3.5.4/lib/plexus-utils-3.1.0.jar
+14b49000-14b4c000 r--s 00008000 08:01 493336     /home/dongyun/apache-maven-3.5.4/lib/cdi-api-1.0.jar
+14b4c000-14b4e000 r--s 00002000 08:01 493329     /home/dongyun/apache-maven-3.5.4/lib/plexus-cipher-1.7.jar
+14b4e000-14b4f000 r--s 00006000 08:01 493332     /home/dongyun/apache-maven-3.5.4/lib/maven-repository-metadata-3.5.4.jar
+14b4f000-14b51000 r--s 0000c000 08:01 493354     /home/dongyun/apache-maven-3.5.4/lib/wagon-provider-api-3.1.0.jar
+14b51000-14b55000 r--s 0002a000 08:01 493346     /home/dongyun/apache-maven-3.5.4/lib/maven-resolver-impl-1.1.1.jar
+14b55000-14b56000 ---p 00000000 00:00 0 
+14b56000-14bd6000 rw-p 00000000 00:00 0          [stack:3213]
+14bd6000-14bd9000 ---p 00000000 00:00 0 
+14bd9000-14c27000 rw-p 00000000 00:00 0          [stack:3212]
+14c27000-14c2a000 ---p 00000000 00:00 0 
+14c2a000-14ca8000 rw-p 00000000 00:00 0          [stack:3211]
+14ca8000-14cab000 ---p 00000000 00:00 0 
+14cab000-14cf9000 rw-p 00000000 00:00 0          [stack:3210]
+14cf9000-14e5e000 r--p 001c8000 08:01 403295     /usr/lib/locale/locale-archive
+14e5e000-1505e000 r--p 00000000 08:01 403295     /usr/lib/locale/locale-archive
+1505e000-15061000 ---p 00000000 00:00 0 
+15061000-150af000 rw-p 00000000 00:00 0          [stack:3209]
+150af000-150b2000 ---p 00000000 00:00 0 
+150b2000-15100000 rw-p 00000000 00:00 0          [stack:3208]
+15100000-15200000 rw-p 00000000 00:00 0 
+15200000-15201000 r--s 00006000 08:01 493328     /home/dongyun/apache-maven-3.5.4/lib/plexus-sec-dispatcher-1.4.jar
+15201000-15203000 r--s 00009000 08:01 493358     /home/dongyun/apache-maven-3.5.4/lib/maven-resolver-connector-basic-1.1.1.jar
+15203000-15204000 ---p 00000000 00:00 0 
+15204000-152d3000 rw-p 00000000 00:00 0          [stack:3207]
+152d3000-154ad000 r--s 03d4d000 08:01 425360     /usr/java/jdk1.8.0_141/jre/lib/rt.jar
+154ad000-1594e000 rw-p 00000000 00:00 0 
+1594e000-15954000 ---p 00000000 00:00 0 
+15954000-15b22000 rw-p 00000000 00:00 0 
+15b22000-15bff000 ---p 00000000 00:00 0 
+15bff000-15cce000 rw-p 00000000 00:00 0 
+15cce000-15d54000 ---p 00000000 00:00 0 
+15d54000-15f22000 rw-p 00000000 00:00 0 
+15f22000-15fff000 ---p 00000000 00:00 0 
+15fff000-2fdf0000 rw-p 00000000 00:00 0 
+2fdf0000-40aa0000 ---p 00000000 00:00 0 
+40aa0000-7a534000 rw-p 00000000 00:00 0 
+8e489000-8e594000 rw-p 00000000 00:00 0 
+8e594000-96000000 ---p 00000000 00:00 0 
+96000000-96173000 rw-p 00000000 00:00 0 
+96173000-96800000 ---p 00000000 00:00 0 
+96800000-9c4a0000 rwxp 00000000 00:00 0 
+9c4a0000-b6800000 ---p 00000000 00:00 0 
+b6800000-b6900000 rw-p 00000000 00:00 0 
+b6900000-b6903000 r--s 00026000 08:01 493331     /home/dongyun/apache-maven-3.5.4/lib/maven-model-3.5.4.jar
+b6903000-b6908000 r--s 00027000 08:01 493340     /home/dongyun/apache-maven-3.5.4/lib/maven-model-builder-3.5.4.jar
+b6908000-b690a000 r-xp 00000000 08:01 656529     /lib/i386-linux-gnu/libutil-2.19.so
+b690a000-b690b000 r--p 00001000 08:01 656529     /lib/i386-linux-gnu/libutil-2.19.so
+b690b000-b690c000 rw-p 00002000 08:01 656529     /lib/i386-linux-gnu/libutil-2.19.so
+b690c000-b6910000 r-xp 00000000 08:01 493298     /home/dongyun/apache-maven-3.5.4/lib/jansi-native/linux32/libjansi.so
+b6910000-b6911000 rw-p 00003000 08:01 493298     /home/dongyun/apache-maven-3.5.4/lib/jansi-native/linux32/libjansi.so
+b6911000-b6915000 r--s 00020000 08:01 493343     /home/dongyun/apache-maven-3.5.4/lib/maven-resolver-api-1.1.1.jar
+b6915000-b6917000 r--s 0000a000 08:01 493334     /home/dongyun/apache-maven-3.5.4/lib/maven-plugin-api-3.5.4.jar
+b6917000-b691a000 r--s 00026000 08:01 493347     /home/dongyun/apache-maven-3.5.4/lib/maven-shared-utils-3.2.1.jar
+b691a000-b691b000 r--s 00003000 08:01 493324     /home/dongyun/apache-maven-3.5.4/lib/maven-builder-support-3.5.4.jar
+b691b000-b691d000 r--s 00009000 08:01 493351     /home/dongyun/apache-maven-3.5.4/lib/slf4j-api-1.7.25.jar
+b691d000-b691f000 r--s 00000000 08:01 418726     /home/dongyun/apache-maven-3.5.4/lib/aopalliance-1.0.jar
+b691f000-b692a000 r--s 00075000 08:01 493349     /home/dongyun/apache-maven-3.5.4/lib/guice-4.2.0-no_aop.jar
+b692a000-b6931000 r--s 00056000 08:01 493339     /home/dongyun/apache-maven-3.5.4/lib/org.eclipse.sisu.inject-0.3.3.jar
+b6931000-b6933000 r--s 0000c000 08:01 493352     /home/dongyun/apache-maven-3.5.4/lib/commons-cli-1.4.jar
+b6933000-b6936000 r--s 00016000 08:01 493320     /home/dongyun/apache-maven-3.5.4/lib/maven-embedder-3.5.4.jar
+b6936000-b6938000 r--s 0000c000 08:01 493333     /home/dongyun/apache-maven-3.5.4/lib/maven-artifact-3.5.4.jar
+b6938000-b693e000 r--s 00041000 08:01 493353     /home/dongyun/apache-maven-3.5.4/lib/maven-compat-3.5.4.jar
+b693e000-b694b000 r--s 0008d000 08:01 493330     /home/dongyun/apache-maven-3.5.4/lib/maven-core-3.5.4.jar
+b694b000-b6964000 r-xp 00000000 08:01 425317     /usr/java/jdk1.8.0_141/jre/lib/i386/libzip.so
+b6964000-b6965000 rw-p 00019000 08:01 425317     /usr/java/jdk1.8.0_141/jre/lib/i386/libzip.so
+b6965000-b6970000 r-xp 00000000 08:01 656449     /lib/i386-linux-gnu/libnss_files-2.19.so
+b6970000-b6971000 r--p 0000a000 08:01 656449     /lib/i386-linux-gnu/libnss_files-2.19.so
+b6971000-b6972000 rw-p 0000b000 08:01 656449     /lib/i386-linux-gnu/libnss_files-2.19.so
+b6972000-b697c000 r-xp 00000000 08:01 656459     /lib/i386-linux-gnu/libnss_nis-2.19.so
+b697c000-b697d000 r--p 00009000 08:01 656459     /lib/i386-linux-gnu/libnss_nis-2.19.so
+b697d000-b697e000 rw-p 0000a000 08:01 656459     /lib/i386-linux-gnu/libnss_nis-2.19.so
+b697e000-b6993000 r-xp 00000000 08:01 656443     /lib/i386-linux-gnu/libnsl-2.19.so
+b6993000-b6994000 r--p 00015000 08:01 656443     /lib/i386-linux-gnu/libnsl-2.19.so
+b6994000-b6995000 rw-p 00016000 08:01 656443     /lib/i386-linux-gnu/libnsl-2.19.so
+b6995000-b6997000 rw-p 00000000 00:00 0 
+b6997000-b699e000 r-xp 00000000 08:01 656445     /lib/i386-linux-gnu/libnss_compat-2.19.so
+b699e000-b699f000 r--p 00006000 08:01 656445     /lib/i386-linux-gnu/libnss_compat-2.19.so
+b699f000-b69a0000 rw-p 00007000 08:01 656445     /lib/i386-linux-gnu/libnss_compat-2.19.so
+b69a0000-b69a2000 r--s 00006000 08:01 493359     /home/dongyun/apache-maven-3.5.4/lib/maven-resolver-transport-wagon-1.1.1.jar
+b69a2000-b69a6000 r--s 00042000 08:01 493361     /home/dongyun/apache-maven-3.5.4/lib/jansi-1.17.1.jar
+b69a6000-b69ac000 r--s 0002d000 08:01 493335     /home/dongyun/apache-maven-3.5.4/lib/org.eclipse.sisu.plexus-0.3.3.jar
+b69ac000-b69b4000 rw-s 00000000 08:01 1182536    /tmp/hsperfdata_dongyun/3190
+b69b4000-b69d8000 r-xp 00000000 08:01 425311     /usr/java/jdk1.8.0_141/jre/lib/i386/libjava.so
+b69d8000-b69d9000 rw-p 00024000 08:01 425311     /usr/java/jdk1.8.0_141/jre/lib/i386/libjava.so
+b69d9000-b69e0000 r-xp 00000000 08:01 656502     /lib/i386-linux-gnu/librt-2.19.so
+b69e0000-b69e1000 r--p 00006000 08:01 656502     /lib/i386-linux-gnu/librt-2.19.so
+b69e1000-b69e2000 rw-p 00007000 08:01 656502     /lib/i386-linux-gnu/librt-2.19.so
+b69e2000-b69e5000 ---p 00000000 00:00 0 
+b69e5000-b6a33000 rw-p 00000000 00:00 0          [stack:3206]
+b6a33000-b6a77000 r-xp 00000000 08:01 656424     /lib/i386-linux-gnu/libm-2.19.so
+b6a77000-b6a78000 r--p 00043000 08:01 656424     /lib/i386-linux-gnu/libm-2.19.so
+b6a78000-b6a79000 rw-p 00044000 08:01 656424     /lib/i386-linux-gnu/libm-2.19.so
+b6a79000-b70d1000 r-xp 00000000 08:01 425286     /usr/java/jdk1.8.0_141/jre/lib/i386/client/libjvm.so
+b70d1000-b70f7000 rw-p 00657000 08:01 425286     /usr/java/jdk1.8.0_141/jre/lib/i386/client/libjvm.so
+b70f7000-b751e000 rw-p 00000000 00:00 0 
+b751e000-b76c7000 r-xp 00000000 08:01 656374     /lib/i386-linux-gnu/libc-2.19.so
+b76c7000-b76c9000 r--p 001a9000 08:01 656374     /lib/i386-linux-gnu/libc-2.19.so
+b76c9000-b76ca000 rw-p 001ab000 08:01 656374     /lib/i386-linux-gnu/libc-2.19.so
+b76ca000-b76cd000 rw-p 00000000 00:00 0 
+b76cd000-b76d0000 r-xp 00000000 08:01 656391     /lib/i386-linux-gnu/libdl-2.19.so
+b76d0000-b76d1000 r--p 00002000 08:01 656391     /lib/i386-linux-gnu/libdl-2.19.so
+b76d1000-b76d2000 rw-p 00003000 08:01 656391     /lib/i386-linux-gnu/libdl-2.19.so
+b76d2000-b76d3000 rw-p 00000000 00:00 0 
+b76d3000-b76e7000 r-xp 00000000 08:01 418843     /usr/java/jdk1.8.0_141/lib/i386/jli/libjli.so
+b76e7000-b76e8000 rw-p 00014000 08:01 418843     /usr/java/jdk1.8.0_141/lib/i386/jli/libjli.so
+b76e8000-b7700000 r-xp 00000000 08:01 656494     /lib/i386-linux-gnu/libpthread-2.19.so
+b7700000-b7701000 r--p 00017000 08:01 656494     /lib/i386-linux-gnu/libpthread-2.19.so
+b7701000-b7702000 rw-p 00018000 08:01 656494     /lib/i386-linux-gnu/libpthread-2.19.so
+b7702000-b7704000 rw-p 00000000 00:00 0 
+b7704000-b7705000 r--s 00002000 08:01 493357     /home/dongyun/apache-maven-3.5.4/lib/wagon-file-3.1.0.jar
+b7705000-b7707000 r--s 00007000 08:01 493344     /home/dongyun/apache-maven-3.5.4/lib/maven-resolver-spi-1.1.1.jar
+b7707000-b7709000 r--s 0000b000 08:01 493319     /home/dongyun/apache-maven-3.5.4/boot/plexus-classworlds-2.5.2.jar
+b7709000-b770a000 r--p 00855000 08:01 403295     /usr/lib/locale/locale-archive
+b770a000-b770b000 rw-p 00000000 00:00 0 
+b770b000-b770c000 ---p 00000000 00:00 0 
+b770c000-b7717000 r-xp 00000000 08:01 424983     /usr/java/jdk1.8.0_141/jre/lib/i386/libverify.so
+b7717000-b7718000 rw-p 0000b000 08:01 424983     /usr/java/jdk1.8.0_141/jre/lib/i386/libverify.so
+b7718000-b771a000 rw-p 00000000 00:00 0 
+b771a000-b771b000 r-xp 00000000 00:00 0          [vdso]
+b771b000-b773b000 r-xp 00000000 08:01 656350     /lib/i386-linux-gnu/ld-2.19.so
+b773b000-b773c000 r--p 0001f000 08:01 656350     /lib/i386-linux-gnu/ld-2.19.so
+b773c000-b773d000 rw-p 00020000 08:01 656350     /lib/i386-linux-gnu/ld-2.19.so
+bf8bb000-bf8bc000 rwxp 00000000 00:00 0 
+bf8ed000-bf90f000 rw-p 00000000 00:00 0          [stack]
+
+VM Arguments:
+jvm_args: -Xmx2g -XX:MaxPermSize=512M -XX:ReservedCodeCacheSize=512m -Dclassworlds.conf=/home/dongyun/apache-maven-3.5.4/bin/m2.conf -Dmaven.home=/home/dongyun/apache-maven-3.5.4 -Dlibrary.jansi.path=/home/dongyun/apache-maven-3.5.4/lib/jansi-native -Dmaven.multiModuleProjectDirectory=/home/dongyun/Downloads/spark-2.4.0 
+java_command: org.codehaus.plexus.classworlds.launcher.Launcher -Pyarn -Phadoop-2.6 -Pspark-ganglia-lgpl -Pkinesis-asl -Phive -DskipTests clean package
+java_class_path (initial): /home/dongyun/apache-maven-3.5.4/boot/plexus-classworlds-2.5.2.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=/usr/java/jdk1.8.0_141
+CLASSPATH=/usr/java/jdk1.8.0_141/jre/lib/ext:/usr/java/jdk1.8.0_141/lib/tools.jar
+PATH=/usr/java/jdk1.8.0_141/bin:/home/dongyun/scala-2.11.12/bin:/home/dongyun/hadoop/hadoop-2.6.0/bin:/home/dongyun/apache-maven-3.5.4/bin:/bin:/home/dongyun/apache-ant-1.9.4/bin:/home/dongyun/spark/spark-2.4.0-bin-hadoop2.6/bin:/home/dongyun/spark/spark-2.4.0-bin-hadoop2.6/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+SHELL=/bin/bash
+DISPLAY=:0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x5bdc10], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0x5bdc10], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0x49cb60], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0x49cb60], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0x49cb60], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0x49cb60], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.so+0x49e410], sa_mask[0]=00000000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: [libjvm.so+0x49f8c0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGINT: [libjvm.so+0x49f8c0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGTERM: [libjvm.so+0x49f8c0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGQUIT: [libjvm.so+0x49f8c0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+
+
+---------------  S Y S T E M  ---------------
+
+OS:DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=14.04
+DISTRIB_CODENAME=trusty
+DISTRIB_DESCRIPTION="Ubuntu 14.04.1 LTS"
+
+uname:Linux 3.13.0-32-generic #57-Ubuntu SMP Tue Jul 15 03:51:12 UTC 2014 i686
+libc:glibc 2.19 NPTL 2.19 
+rlimit: STACK 8192k, CORE 0k, NPROC 32117, NOFILE 4096, AS infinity
+load average:1.58 1.69 1.59
+
+/proc/meminfo:
+MemTotal:        4130212 kB
+MemFree:          262920 kB
+Buffers:           10680 kB
+Cached:           127588 kB
+SwapCached:            0 kB
+Active:          3477260 kB
+Inactive:          74420 kB
+Active(anon):    3414380 kB
+Inactive(anon):     9832 kB
+Active(file):      62880 kB
+Inactive(file):    64588 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+HighTotal:       3280776 kB
+HighFree:          83036 kB
+LowTotal:         849436 kB
+LowFree:          179884 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:               148 kB
+Writeback:             0 kB
+AnonPages:       3413480 kB
+Mapped:            65228 kB
+Shmem:             10732 kB
+Slab:              58356 kB
+SReclaimable:      39944 kB
+SUnreclaim:        18412 kB
+KernelStack:        3560 kB
+PageTables:        13452 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     2065104 kB
+Committed_AS:    5530544 kB
+VmallocTotal:     122880 kB
+VmallocUsed:       21724 kB
+VmallocChunk:      80212 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:   1908736 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:       18424 kB
+DirectMap2M:      894976 kB
+
+
+CPU:total 1 (initial active 1) (1 cores per cpu, 1 threads per core) family 6 model 94 stepping 3, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, rtm, 3dnowpref, lzcnt, tsc, tscinvbit, bmi1, bmi2, adx
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 94
+model name	: Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz
+stepping	: 3
+microcode	: 0x9e
+cpu MHz		: 3408.229
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 1
+core id		: 0
+cpu cores	: 1
+apicid		: 0
+initial apicid	: 0
+fdiv_bug	: no
+f00f_bug	: no
+coma_bug	: no
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts mmx fxsr sse sse2 ss nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts xtopology tsc_reliable nonstop_tsc aperfmperf eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch ida arat epb xsaveopt pln pts dtherm fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 invpcid rtm rdseed adx smap
+bogomips	: 6816.45
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 42 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 4130212k(262920k free), swap 0k(0k free)
+
+vm_info: Java HotSpot(TM) Client VM (25.141-b15) for linux-x86 JRE (1.8.0_141-b15), built on Jul 12 2017 04:37:33 by "java_re" with gcc 4.3.0 20080428 (Red Hat 4.3.0-8)
+
+time: Thu Nov 15 23:10:30 2018
+elapsed time: 843 seconds (0d 0h 14m 3s)
+
