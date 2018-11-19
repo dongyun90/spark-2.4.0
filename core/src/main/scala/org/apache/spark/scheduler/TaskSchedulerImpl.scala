@@ -380,8 +380,9 @@ private[spark] class TaskSchedulerImpl(
       }
     }.getOrElse(offers)
 
-    val shuffledOffers = shuffleOffers(filteredOffers)
-    if (shuffledOffers.length > 0) {
+//    val shuffledOffers = shuffleOffers(filteredOffers)
+    val shuffledOffers = IndexedSeq(new WorkerOffer("0", "192.168.1.250", 1, Some("192.168.1.250:53412")))
+    if (shuffledOffers.size > 0) {
       println()
     }
     // Build a list of tasks to assign to each worker.
